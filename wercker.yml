@@ -1,0 +1,28 @@
+box: cloudnativego/hugo:0.14.0
+
+build:
+  steps:
+    - script:
+        name: generate hugo
+        code: |
+          cd $WERCKER_SOURCE_DIR
+          # The following line is necessary to circumvent
+          # functional inconsistencies between Mac OS and
+          # Linux. It is ugly. It is awful. But, it is.
+          ./publish
+    - script:
+        name: add contents to output
+        code: |
+          echo ${WERKCER_OUTPUT_DIR}
+          cp -R ./ ${WERCKER_OUTPUT_DIR}
+          cd ${WERCKER_OUTPUT_DIR}
+deploy:
+  steps:
+    -  xchapter7x/cf-push:
+        cloudfoundry_user_name: $USERNAME
+        cloudfoundry_user_pass: $PASSWORD
+        cloudfoundry_org: pivot
+        cloudfoundry_space: Template
+        cloudfoundry_api_url: api.run.pivotal.io
+        cloudfoundry_app_name: template-cookbook
+        cloudfoundry_use_manifest: true

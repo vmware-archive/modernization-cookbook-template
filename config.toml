@@ -1,0 +1,10 @@
+baseurl = "/"
+languageCode = "en-us"
+title = "Template App Migration Recipes"
+copyright = "Copyright 2017, Pivotal; All rights reserved."
+
+[params]
+  description = "Migrating applications to Cloud Foundry."
+  #repositoryUrl = "optional"
+  mainMenu = ["inception", "applications", "recipes", "documents"]
+  noCategoryLink = true

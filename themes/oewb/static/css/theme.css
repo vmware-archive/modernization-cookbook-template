@@ -1,0 +1,111 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+ul.navbar-nav {
+  padding-top: 10px;
+}
+
+.doc-main {
+  margin-top: 25px;
+}
+
+.doc-sidebar {
+  margin-top: 25px;
+}
+
+.navbar-pivotal {
+  background-color:black;
+}
+
+.navbar-txt{
+  color: white;
+}
+
+.navbar-txt:hover {
+  color: #00776D;
+}
+
+.nav-pipe {
+  margin-top: 3px;
+  color: white;
+}
+
+img {
+  max-width: 100%;
+}
+
+.title {
+  border: none;
+}
+
+.pivotal-logo {
+	max-height: 50px;
+  margin-top: -15px;
+}
+
+table {
+    width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+ padding: 8px;
+ line-height: 1.42857143;
+ vertical-align: top;
+ border-top: 1px solid #ddd;
+}
+table > thead > tr > th {
+ vertical-align: bottom;
+ border-bottom: 2px solid #ddd;
+}
+table > caption + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > td {
+ border-top: 0;
+}
+table > tbody + tbody {
+ border-top: 2px solid #ddd;
+}
+table {
+ background-color: #fff;
+ border: 1px solid #ddd;
+}
+
+table > tbody > tr:nth-of-type(odd) {
+ background-color: #f9f9f9 ;
+}
+
+.blink_me {
+  color: red;
+  animation: blinker 1s linear infinite;
+  -webkit-animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0.0; }
+}

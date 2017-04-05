@@ -1,0 +1,43 @@
+{{ $baseUrl := .Site.Params.basedir }}
+{{ partial "header.html" . }}
+
+<main role="main">
+
+	<!--[if IE]>
+	<div style="text-align: center; padding: 40px;">
+	WARNING: This site will render <span class="blink_me">HORRIBLY</span> with Internet Explorer.
+	</div>
+<![endif]-->
+
+
+<div class="row">
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="pane bg-dark-2">
+		<div class="container" style="width:95%;">
+			<h1 class="type-neutral-11 title">{{ .Site.Title }}</h1>
+			<p class="type-brand-8">{{ if isset .Site.Params "description" }}{{ .Site.Params.description }}{{ else }}You can customize this text by params "description" in your <code>config.toml</code>.{{ end }}</p>
+		</div>
+	</div>
+</div>
+
+{{ range where .Site.Pages "Title" "_index" }}
+	<div class="row doc-main">
+    <div class="container" style="width:95%;">
+			{{ .Content }}
+		</div>
+	</div>
+{{ end }}
+
+
+
+{{ if isset .Site.Params "withSitePosts" }}
+<hr />
+
+<div class="row doc-main text-center">
+	<a href="/post">See posts for {{ .Site.Title }}</a>
+</div>
+{{ end }}
+
+</main>
+
+{{ partial "footer.html" . }}
