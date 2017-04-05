@@ -22,7 +22,7 @@ deploy:
         cloudfoundry_user_name: $USERNAME
         cloudfoundry_user_pass: $PASSWORD
         cloudfoundry_org: pivot
-        cloudfoundry_space: Template
+        cloudfoundry_space: development
         cloudfoundry_api_url: api.run.pivotal.io
-        cloudfoundry_app_name: template-cookbook
+        cloudfoundry_app_name: modernization-cookbook-template
         cloudfoundry_use_manifest: true
