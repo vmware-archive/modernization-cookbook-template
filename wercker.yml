@@ -21,7 +21,7 @@ deploy:
     -  xchapter7x/cf-push:
         cloudfoundry_user_name: $USERNAME
         cloudfoundry_user_pass: $PASSWORD
-        cloudfoundry_org: pivot
+        cloudfoundry_org: ashumilov-org
         cloudfoundry_space: development
         cloudfoundry_api_url: api.run.pivotal.io
         cloudfoundry_app_name: modernization-cookbook-template
