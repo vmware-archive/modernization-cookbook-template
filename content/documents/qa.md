@@ -33,7 +33,7 @@ R. You could follow a couple  of policies here
 ### Migration Patterns
 Q. _What is the migration strategy for cutting over clients to the modernized service?  For example, today we usually incrementally switch clients over to a new service, usually by jurisdiction (ME, NH, TX, etc.).  Is this an effective strategy?_
 
-R. Introduce a layer of abstraction. Have both services implement the facade. Gradually switch clients to the modernized service that implements the same facade as the old code. Clients could be migrated by any grouping criteria. Use techniques like  dynamic routing with API Gateways, Blue/Green, Context Path Routing  and canary releases to reduce the impact of cutover to the modernized service. Use feature flags to control the flow of inbound clients.
+R. Introduce a layer of abstraction. Have both services implement the [facade](/recipes/greenfield-modernization)	. Gradually switch clients to the modernized service that implements the same facade as the old code. Clients could be migrated by any grouping criteria. Use techniques like  dynamic routing with API Gateways, Blue/Green, Context Path Routing  and canary releases to reduce the impact of cutover to the modernized service. Use feature flags to control the flow of inbound clients.
 
 ### Data Migration
 Q. _How do we manage the migration of data from the legacy services to the modernized services?  Some of our tables have millions of records and hundreds of columns.  Migrating data for zip code or VIN does not help us address this concern._
