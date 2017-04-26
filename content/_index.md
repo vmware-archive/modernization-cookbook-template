@@ -10,6 +10,8 @@ _5 April 2017_
 
 Over the next 6 weeks, Pivotal is working with development teams at Template to move their applications to Cloud Foundry and teach patterns for moving future apps. The engagement will take place at the Template office, where the Template team members will pair with Pivots.
 
+See [Q&A Section](/documents/qa) for modernization questions and answers.
+
 During the course of this engagement, we will be logging our daily progress in the [Applications](/applications) section.
 [Blockers](/blockers) will be tracked as separate items to increase visibility.
 We will create [Recipes](/recipes) for modifications that are repeatable and likely to be encountered across applications, while [Documents](/documents) will contain more general, supporting information relevant to app migration and cloud nativity.

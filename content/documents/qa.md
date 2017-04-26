@@ -72,11 +72,12 @@ R. Modernization has to start from some point. There are various starting points
 ### Deployment Strategy
 Q. _We currently operate on a monthly release cycle.  At any given time, we will have 4 different environments to support 4 different monthly releases (i.e. January, February, March and April environments).  These environments are denoted by A, B, C, D.  We will not be able to completely break away from this release schedule for years._
 
-R. Understood this is more of a DevOps issue. You need to transform the value chain following this playbook
-- Identify a single product to work with / go after
-- Put all the people responsible for the thing together (design, dev, qa, arch, pm etc), permanently
-- Identify the thing that 1. is done most often and 2. is repeated most often (use a 2x2)
-- Fix it, solution can totally be a one off as long as you learn from it
+R. Understood this is more of a DevOps issue. You need to transform the value chain following this playbook.  Microservices versioning and deployment strategy is outlined [here](https://opencredo.com/versioning-a-microservice-system-with-git/).
+
+1. Identify a single product to work with / go after
+2. Put all the people responsible for the thing together (design, dev, qa, arch, pm etc), permanently
+3. Identify the thing that 1. is done most often and 2. is repeated most often (use a 2x2)
+4. Fix it, solution can totally be a one off as long as you learn from it
 repeat 3&4.
 
 ### Benefits of Modernization
