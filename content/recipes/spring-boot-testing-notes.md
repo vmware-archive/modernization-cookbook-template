@@ -2,7 +2,7 @@
 categories = ["recipes"]
 date = "2017-04-25T14:03:10-04:00"
 glyph = "fa-file-text-o"
-summary = "Recipe Summary"
+summary = "Testing strategies recommendations."
 tags = ["[testing]", "[junit]", "[spring boot]"]
 title = "Spring Boot Testing Notes"
 
