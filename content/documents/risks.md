@@ -7,6 +7,10 @@ tags = ["[risks]"]
 title = "Risks"
 
 +++
+
+1. Does the _High/Med/Low_ designation indicate impact or probability of occurring?
+2. Consider adding a probability designation. For example, a high impact risk that is not likely to occur may not need to be mitigated
+3. Not all risks need to be mitigated, consider adding a designation that states what action is to be taken to handle the risk: _Mitigate/Accept_
 ## Implementation
 
 1. Not having isolation level (High)
