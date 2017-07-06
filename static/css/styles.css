@@ -1,0 +1,49 @@
+.logo {
+  color: black;
+}
+
+/*
+ * Theme customization follows...
+ */
+
+#header {
+  background: #243641;
+}
+
+#header-wrapper {
+  background: #243641;       /*#ecefef;*/
+  border-bottom-color: #8d8e8e;
+
+}
+
+/* background of menu */
+#sidebar {
+  background-color: #243641;
+}
+
+/* background of menu (when clicked) */
+#sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
+  background-color: #243641;
+}
+
+#body a.highlight {
+  text-decoration: underline;
+}
+
+a {
+  color: #138078;
+}
+
+a:visited {
+  color: #0B4D48;
+}
+
+/* color of visited checkmarks */
+#sidebar ul li.visited > a .read-icon {
+  color: #ecefef;
+}
+
+.searchbox {
+    background: #686868;
+    border-color: #8d8e8e;
+}
