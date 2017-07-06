@@ -3,21 +3,21 @@ resources:
 - name: hugo
   type: github-release
   source:
-    user: spf13
+    user: gohugoio
     repository: hugo
     access_token: {{github_token}}
 - name: documentation-repo
   type: git
   source:
     uri: {{git_repo_uri}}
-    branch: master
-    private_key: {{git_private_key}}
-- name: prod
+    branch: {{git_branch}}
+    private_key: {{github_token}}
+- name: pws
   type: cf
   source:
-      api: {{api}}
-      organization: {{org}}
-      space: {{space}}
+      api: {{cf_api}}
+      organization: {{cf_org}}
+      space: {{cf_space}}
       username: {{cf-username}}
       password: {{cf-password}}
       skip_cert_check: true
@@ -26,14 +26,22 @@ jobs:
 - name: compile-site
   plan:
   - get: documentation-repo
+    params:
+      submodules: all
     trigger: true
+
   - get: hugo
     params:
       globs:
       - '*Linux-64bit.tar.gz'
+  
   - task: compile-site
     file: documentation-repo/ci/tasks/hugo.yml
-  - put: prod
+  
+  - task: index-site
+    file: documentation-repo/ci/tasks/index.yml
+
+  - put: pws
     params:
-      manifest: compiled-site/manifest.yml
-      path: compiled-site
+       manifest: indexed-site/manifest.yml
+       path: indexed-site

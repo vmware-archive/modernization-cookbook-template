@@ -5,7 +5,7 @@ HUGO=$(find hugo -type f -name *_linux_amd64)
 $HUGO version
 
 cd documentation-repo
-../$HUGO -Ds '' -t oewb
+../$HUGO -Ds '' 
 
 mv public ../compiled-site
 mv Staticfile ../compiled-site/
