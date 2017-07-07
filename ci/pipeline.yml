@@ -43,5 +43,5 @@ jobs:
 
   - put: pws
     params:
-       manifest: compile-site/manifest.yml
-       path: compile-site
+       manifest: compiled-site/manifest.yml
+       path: compiled-site
