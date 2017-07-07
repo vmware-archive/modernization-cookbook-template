@@ -1,1 +1,1 @@
-hugo -Ds '' -t docdock
+hugo -Ds '' -t hugo-theme-docdock
