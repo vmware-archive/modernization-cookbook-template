@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-set -e
+set -eux
 tar -xf hugo/*.tar.gz -C hugo
-HUGO=$(find hugo -type f -name *_linux_amd64)
+HUGO=$(find hugo -type f -name hugo)
 $HUGO version
 
 cd documentation-repo
-../$HUGO -Ds '' -t oewb
+../$HUGO -Ds ''
 
 mv public ../compiled-site
 mv Staticfile ../compiled-site/
