@@ -66,3 +66,17 @@ This site uses the `hugo-theme-docdock` theme, which is stored as a git submodul
 under the `themes` directory.
 
 To pull the latest version of the theme, simply update your submodules: `git submodule update --init --recursive`.
+
+## Disable Home Page Icon
+To disable the homepage and remove icon from sidebar, set the `noHomeIcon` param in `/config.toml`:
+
+``` toml
+[params]
+noHomeIcon = false
+```
+
+## Redirect to Different URL
+To redirect to the `/recipes` route by default, uncomment the following in `/layouts/partials/index.html`:
+``` html
+<meta http-equiv="refresh" content="0; url=/recipes" />
+```
