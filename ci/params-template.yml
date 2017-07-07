@@ -1,0 +1,11 @@
+cf_api: api.run.pivotal.io
+cf_org: EVP
+cf_space: pse-production
+cf-username: 
+cf-password: 
+git_repo_uri: git@github.com:pivotalservices/modernization-cookbook-template.git
+github_api_token: 
+git_branch: canonical-cookbook-update
+github_token: |
+      -----BEGIN RSA PRIVATE KEY-----
+      -----END RSA PRIVATE KEY-----
