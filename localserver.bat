@@ -1,1 +1,1 @@
-hugo server -wDs . -d dev -t oewb
+hugo server -wDs . -d dev -t docdock

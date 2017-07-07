@@ -1,6 +1,6 @@
 +++ 
 categories = ["blockers"]
-tags = ["[blocker]"]
+tags = ["[foo]"]
 summary = "Summary for blockers"
 title = "{{ replace .TranslationBaseName "-" " " | title }}"
 date = {{ .Date }}
