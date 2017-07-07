@@ -28,11 +28,6 @@ cf push
 hugo new inception/(title).md
 ```
 
-### Add New pre-migration recipe
-```
-hugo new pre-migration/(title).md
-```
-
 ### Add New Application
 ```
 hugo new applications/(title).md
