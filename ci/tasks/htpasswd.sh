@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eux
 
-htpasswd $SITE_USER $SITE_PASSWORD > ./password-site/Staticfile.auth
+sudo apt-get -y install --no-install-recommends apache2-utils
+
+htpasswd -Bb ./password-site/Staticfile.auth $SITE_USER $SITE_PASSWORD 
 
 more ./password-site/Staticfile.auth
