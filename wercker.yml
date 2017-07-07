@@ -3,6 +3,11 @@ box: cloudnativego/hugo:0.14.0
 build:
   steps:
     - script:
+        name: init submodules
+        code: |
+          git submodule update --init --recursive
+          ls themes
+    - script:
         name: generate hugo
         code: |
           cd $WERCKER_SOURCE_DIR
