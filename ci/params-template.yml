@@ -1,3 +1,5 @@
+site_user: pivotal
+site_password: bekind
 cf_api: api.run.pivotal.io
 cf_org: EVP
 cf_space: pse-production
