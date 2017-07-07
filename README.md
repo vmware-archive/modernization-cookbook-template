@@ -26,7 +26,7 @@ git clone https://github.com/pivotalservices/modernization-cookbook-template.git
 cf push
 ```
 
-### Add New inception document
+### Add New Inception document
 ```
 hugo new inception/(title).md
 ```
@@ -51,9 +51,14 @@ hugo new recipes/(title).md
 hugo new documents/(title).md
 ```
 
+### Add New Lightweight Architecture Decision Record
+```
+hugo new decisions/(title).md
+```
+
 ## Updating the theme
 
-This site uses the `docdock` theme, which is stored as a git submodule
+This site uses the `hugo-theme-docdock` theme, which is stored as a git submodule
 under the `themes` directory.
 
 To pull the latest version of the theme, simply update your submodules: `git submodule update --init --recursive`.
