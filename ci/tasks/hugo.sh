@@ -10,3 +10,4 @@ cd documentation-repo
 mv public ../compiled-site
 mv Staticfile ../compiled-site/
 mv manifest.yml ../compiled-site/
+cp ../password-site/Staticfile.auth ../compiled-site/

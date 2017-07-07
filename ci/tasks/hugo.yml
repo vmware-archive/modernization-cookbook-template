@@ -8,6 +8,7 @@ image_resource:
 inputs:
   - name: documentation-repo
   - name: hugo
+  - name: password-site
 
 outputs:
   - name: compiled-site

@@ -35,11 +35,14 @@ jobs:
       globs:
       - '*Linux-64bit.tar.gz'
 
+  - task: generate-auth
+    file: documentation-repo/ci/tasks/htpasswd.yml
+    params:
+      SITE_USER: {{site_password}}
+      SITE_PASSWORD: {{site_user}}
+  
   - task: compile-site
     file: documentation-repo/ci/tasks/hugo.yml
-
-#  - task: index-site
-#    file: documentation-repo/ci/tasks/index.yml
 
   - put: pws
     params:
