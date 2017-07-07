@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -eux
 tar -xf hugo/*.tar.gz -C hugo
 HUGO=$(find hugo -type f -name *_linux_amd64)
 $HUGO version
