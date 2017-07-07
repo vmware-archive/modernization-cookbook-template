@@ -1,7 +1,8 @@
-+++
-categories = ["recipes"]
++++ 
+categories = ["blockers"]
 tags = ["[foo]"]
-summary = "Recipe Summary"
+summary = "Summary for blockers"
 title = "{{ replace .TranslationBaseName "-" " " | title }}"
 date = {{ .Date }}
+resolved = false
 +++

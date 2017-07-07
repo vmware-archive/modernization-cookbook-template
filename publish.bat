@@ -1,1 +1,1 @@
-hugo -Ds "" -t oewb
+hugo -Ds "" 

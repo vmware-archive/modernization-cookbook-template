@@ -1,6 +1,7 @@
-+++
++++ 
 categories = ["applications"]
-tags = ["[lob]", "[buildpack]"]
-glyph = "fa-cloud-upload"
+tags = ["[foo]", "[foo]"]
 summary = "Summary for application"
+title = "{{ replace .TranslationBaseName "-" " " | title }}"
+date = {{ .Date }}
 +++
