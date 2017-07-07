@@ -1,6 +1,11 @@
+[![wings.concourse.ci](https://wings.concourse.ci/api/v1/teams/PCFS/pipelines/modernization-template/jobs/compile-site/badge)](https://wings.concourse.ci/teams/PCFS/pipelines/modernization-template)
+
+
 # Template App Migration Dojo Cookbook Site
 
-This is a [Hugo](https://github.com/spf13/hugo) site. It is driven by markdown files that can be generated using the commands provided in this document.
+This is a [Hugo](https://github.com/gohugoio/hugo) site. It is driven by markdown files that can be generated using the commands provided in this document.
+
+Hosted on PWS: https://modernization-template.cfapps.io/
 
 ## Getting Started
 
@@ -8,7 +13,7 @@ This is a [Hugo](https://github.com/spf13/hugo) site. It is driven by markdown f
 
 - Install `hugo`
   - With homebrew (Mac): `brew update && brew install hugo`
-  - Manual download: https://github.com/spf13/hugo/releases
+  - Manual download: https://github.com/gohugoio/hugo/releases
 - Clone this repo with the `--recursive` flag to include the theme, which is a submodule:
 ```
 git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive
