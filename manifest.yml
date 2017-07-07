@@ -1,5 +1,5 @@
 ---
 applications:
-- name: modernization-cookbook-template
+- name: modernization-template
   memory: 64M
   buildpack: staticfile_buildpack
