@@ -5,7 +5,7 @@ resources:
   source:
     user: gohugoio
     repository: hugo
-    access_token: {{github_token}}
+    access_token: {{github_api_token}}
 - name: documentation-repo
   type: git
   source:
@@ -34,14 +34,14 @@ jobs:
     params:
       globs:
       - '*Linux-64bit.tar.gz'
-  
+
   - task: compile-site
     file: documentation-repo/ci/tasks/hugo.yml
-  
-  - task: index-site
-    file: documentation-repo/ci/tasks/index.yml
+
+#  - task: index-site
+#    file: documentation-repo/ci/tasks/index.yml
 
   - put: pws
     params:
-       manifest: indexed-site/manifest.yml
-       path: indexed-site
+       manifest: compile-site/manifest.yml
+       path: compile-site
