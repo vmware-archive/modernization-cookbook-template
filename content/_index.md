@@ -1,34 +1,21 @@
 +++
-date = "2017-03-16T23:35:48-05:00"
-draft = false
-title = "_index" #_
+date = "2017-04-21T15:28:50-06:00"
+title = "Home Page"
+description = "Default Home Page"
 
 +++
 
-# Template Application Replatforming Dojo
-_5 April 2017_
+## Default Home Page
 
-Over the next 6 weeks, Pivotal is working with development teams at Template to move their applications to Cloud Foundry and teach patterns for moving future apps. The engagement will take place at the Template office, where the Template team members will pair with Pivots.
+To disable the homepage and remove icon from sidebar, set the `noHomeIcon` param in `/config.toml`:
 
-See [Q&A Section](/documents/qa) for modernization questions and answers.
-
-During the course of this engagement, we will be logging our daily progress in the [Applications](/applications) section.
-[Blockers](/blockers) will be tracked as separate items to increase visibility.
-We will create [Recipes](/recipes) for modifications that are repeatable and likely to be encountered across applications, while [Documents](/documents) will contain more general, supporting information relevant to app migration and cloud nativity.
-
-The project backlog is being maintained in [Pivotal Tracker](https://www.pivotaltracker.com/n/projects).
-
-Daily Standups for the project are scheduled for 8:05am CST every day.
-
-Iteration Planning Meetings (IPM) are scheduled for every Thursday, and weekly Demos and Retrospectives are scheduled for every Thursday.
-
-## The Team
-
-Template:
+``` toml
+[params]
+noHomeIcon = false
+```
 
 
-Dojo Pivots:
-
-- Caleb Washburn [pivot@pivotal.io](mailto:pivot@pivotal.io)
-
-Broader Pivotal Team Supporting Template:
+To redirect to the `/recipes` route by default, uncomment the following in `/layouts/partials/index.html`:
+``` html
+<meta http-equiv="refresh" content="0; url=/recipes" />
+```
