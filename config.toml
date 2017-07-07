@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "Template App Migration Recipes"
 copyright = "@2017, Pivotal Software, Inc. All Rights Reserved, Confidential"
 theme = "hugo-theme-docdock"
+publishDir = "public"
 
 [params]
   description = "Migrating applications to Cloud Foundry."
