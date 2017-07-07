@@ -7,6 +7,6 @@ $HUGO version
 cd documentation-repo
 ../$HUGO -Ds ''
 
-mv public ../compiled-site
-mv Staticfile ../compiled-site/
-mv manifest.yml ../compiled-site/
+mv public ../compile-site
+mv Staticfile ../compile-site/
+mv manifest.yml ../compile-site/
