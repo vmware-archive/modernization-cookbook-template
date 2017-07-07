@@ -38,8 +38,8 @@ jobs:
   - task: generate-auth
     file: documentation-repo/ci/tasks/htpasswd.yml
     params:
-      SITE_USER: {{site_password}}
-      SITE_PASSWORD: {{site_user}}
+      SITE_USER: {{site_user}}
+      SITE_PASSWORD: {{site_password}}
   
   - task: compile-site
     file: documentation-repo/ci/tasks/hugo.yml
