@@ -9,10 +9,13 @@ This is a [Hugo](https://github.com/spf13/hugo) site. It is driven by markdown f
 - Install `hugo`
   - With homebrew (Mac): `brew update && brew install hugo`
   - Manual download: https://github.com/spf13/hugo/releases
-- Clone this repo with the `--recursive` flag to include the theme, which is a submodule
+- Clone this repo with the `--recursive` flag to include the theme, which is a submodule:
+```
+git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive
+```
   - Alternatively, fetch the theme manually: `git submodule update --init --recursive`
 
-### Run locally
+### Run locally (default: `localhost:1313`)
 ```
 ./localserver
 ```

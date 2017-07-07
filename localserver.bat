@@ -1,1 +1,1 @@
-hugo server -wDs . -d dev -t docdock
+hugo server -wDs . -d dev -t hugo-theme-docdock
