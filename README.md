@@ -13,6 +13,10 @@ This is a [Hugo](https://github.com/spf13/hugo) site. It is driven by markdown f
 ```
 git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive
 ```
+Clone this branch:
+```
+git clone -b canonical-cookbook-template https://github.com/pivotalservices/modernization-cookbook-template.git --recursive
+```
   - Alternatively, fetch the theme manually: `git submodule update --init --recursive`
 
 ### Run locally (default: `localhost:1313`)
