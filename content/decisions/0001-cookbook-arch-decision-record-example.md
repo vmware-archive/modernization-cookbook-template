@@ -1,16 +1,16 @@
 +++
-date = 2017-07-07
-title = "0001-Example-Title"
 categories = ["Decisions"]
-weight = 5
-
+tags = ["[foo]"]
+summary = "Lightweight Architecture Decision Artifacts"
+title = "0001 Cookbook Arch Decision Record Example"
+date = 2017-07-24T18:19:35-07:00
 +++
 
 ## Title
 Example Title
 
 ## Status
-- [x] PROPOSED
+- [ ] PROPOSED
 - [ ] ACCEPTED
 - [ ] DEPRECATED
 - [ ] SUPERSEDED
