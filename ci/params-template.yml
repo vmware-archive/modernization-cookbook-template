@@ -7,7 +7,7 @@ cf-username:
 cf-password: 
 git_repo_uri: git@github.com:pivotalservices/modernization-cookbook-template.git
 github_api_token: 
-git_branch: canonical-cookbook-update
+git_branch: master
 github_token: |
       -----BEGIN RSA PRIVATE KEY-----
       -----END RSA PRIVATE KEY-----
