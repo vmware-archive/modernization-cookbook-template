@@ -11,6 +11,7 @@ publishDir = "public"
   showVisitedLinks = false
   noSearch = false
   noHomeIcon = false
+  ordersectionsby = "title"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
