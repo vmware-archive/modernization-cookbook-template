@@ -5,9 +5,11 @@ description = "Default Home Page"
 +++
 
 # Application Transformation Cookbook
-        **INTERNAL ONLY**
 
-## Recipes, documents & code snippets to run your apps well on Cloud Foundry.
+### _**INTERNAL ONLY**_
+---
+
+## Recipes, documents & code snippets to replatform and modernize apps to Cloud Foundry.
 
 We believe in moving Apps to PCF.
 - Plan Just Enough to Start
