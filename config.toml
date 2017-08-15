@@ -12,7 +12,7 @@ publishDir = "public"
   noSearch = false
   noHomeIcon = false
   ordersectionsby = "title"
-  ignoreFiles = [ "api.adoc$" ]
+  ignoreFiles = [ "\\.adoc$" ]
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
