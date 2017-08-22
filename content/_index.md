@@ -21,4 +21,4 @@ We believe in moving Apps to PCF.
 
 ![Cloud Native Continuum](/images/cloud-native-continuum.jpg)
 
-{{% children description="true" style="h2" %}}
+{{% children description="true" style="h3" %}}
