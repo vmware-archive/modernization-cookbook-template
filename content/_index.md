@@ -20,3 +20,5 @@ We believe in moving Apps to PCF.
 - Let Real Work Inform Strategy
 
 ![Cloud Native Continuum](/images/cloud-native-continuum.jpg)
+
+{{% children description="true" style="h2" %}}
