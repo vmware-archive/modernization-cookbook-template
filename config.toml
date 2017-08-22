@@ -11,7 +11,7 @@ publishDir = "public"
   showVisitedLinks = false
   noSearch = false
   noHomeIcon = false
-  ordersectionsby = "title"
+  ordersectionsby = "weight"
   ignoreFiles = [ "\\.adoc$" ]
 
 [outputs]
