@@ -5,7 +5,7 @@ glyph = "fa-file-text-o"
 summary = "Recipe Summary"
 tags = ["[modernization]", "[greenfield]"]
 title = "Using Greenfield Application to Drive Modernization"
-
+taxonomy = ["MODERNIZATION"]
 +++
 
 ![facade](/documents/greenfield-modernization/Greenfield-Modernization.png)

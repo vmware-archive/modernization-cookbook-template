@@ -5,6 +5,7 @@ glyph = "fa-book"
 summary = "Document summary"
 tags = ["[qa]"]
 title = "Modernization Questions"
+taxonomy = ["MODERNIZATION"]
 
 +++
 ### New vs Existing

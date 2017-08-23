@@ -5,7 +5,7 @@ glyph = "fa-file-text-o"
 summary = "Testing strategies recommendations."
 tags = ["[testing]", "[junit]", "[spring boot]"]
 title = "Spring Boot Testing Notes"
-
+taxonomy = ["TEST-DRIVEN-DEVELOPMENT"]
 +++
 # General recommendations to keep in mind while writing spring boot tests.
 

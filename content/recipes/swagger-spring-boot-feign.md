@@ -5,7 +5,7 @@ glyph = "fa-file-text-o"
 summary = "Bootstraping Spring Boot Applications with Swagger Codegen"
 tags = ["[swagger]", "[codegen]", "[spring boot]", "[feign]"]
 title = "Use Swagger Codegen to generate Microservices."
-
+taxonomy = ["API-FIRST"]
 +++
 ## Overvew
 

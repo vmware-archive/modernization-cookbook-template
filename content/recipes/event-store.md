@@ -5,7 +5,7 @@ glyph = "fa-file-text-o"
 summary = "Event Store"
 tags = ["[cqrs]"]
 title = "Event Store"
-
+taxonomy = ["MODERNIZATION"]
 +++
 
 ## Components

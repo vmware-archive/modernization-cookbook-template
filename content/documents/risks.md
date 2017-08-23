@@ -5,7 +5,7 @@ glyph = "fa-book"
 summary = "Outlines possible risks affecting the delivery of the project."
 tags = ["[risks]"]
 title = "Risks"
-
+taxonomy = ["MODERNIZATION"]
 +++
 
 1. Does the _High/Med/Low_ designation indicate impact or probability of occurring?
