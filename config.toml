@@ -17,21 +17,3 @@ publishDir = "public"
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
-[[menu.shortcuts]]
-pre = "<h3>More</h3>"
-name = "<i class='fa fa-github'></i> Docdock Theme Github Repo"
-identifier = "ds"
-url = "https://github.com/vjeantet/hugo-theme-docdock"
-weight = 10
-
-[[menu.shortcuts]]
-name = "<i class='fa fa-bookmark'></i> Docdock Theme Documentation"
-identifier = "docdock"
-url = "https://docdock.netlify.com/"
-weight = 20
-
-[[menu.shortcuts]]
-name = "<i class='fa fa-bookmark'></i> Hugo Documentation"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
-weight = 30
