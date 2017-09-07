@@ -18,7 +18,9 @@
     <ul class="topics">
         {{if not .Site.Params.noHomeIcon}}
             <li data-nav-id="{{"/" | relURL}}" class="dd-item">
-            <a href="{{"/" | relURL}}"><i class="fa fa-fw fa-home"></i></a>
+            <a href="{{"/" | relURL}}">
+              <span><i class="fa fa-fw fa-home"></i>&nbsp;&nbsp;{{.Title}}</span>
+            </a>
             </li>
         {{end}}
 
