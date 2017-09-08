@@ -1,4 +1,4 @@
-baseURL = "http://app-transformation-cookbook.cfapps.io/"
+baseURL = "/"
 languageCode = "en-us"
 title = "Template App Migration Recipes"
 copyright = "@2017, Pivotal Software, Inc. All Rights Reserved, Confidential"
