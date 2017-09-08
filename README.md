@@ -31,11 +31,12 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 12. **ADMIN-PROCESSES** "Run admin/management tasks as one-off processes. Batch processing."
 13. **STATELESS-CONCURRENCY** "Execute the app as one or more stateless processes. Scale out via the process model"
 14. **TELEMETRY** "APM, Metrics and Monitoring."
-15. AUTHn-AUTHz  fa-lock "Security related topics."
+15. **AUTHn-AUTHz**  "Security related topics."
 16. **TROUBLESHOOTING** "Debugging and Troubleshooting of apps and modules during staging and running of apps"
 17. **DAY2-OPS** "Operating an app in production."
 18. **GENERAL** "General uncategorized recipes"
 19. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
+20. **CLIENT** Do NOT publish this recipe internally or externally in any aggregated cookbook. 
 
 ## Getting Started
 
