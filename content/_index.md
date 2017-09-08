@@ -1,6 +1,6 @@
 +++
 date = "2017-04-21T15:28:50-06:00"
-title = "Home Page"
+title = "Introduction"
 description = "Default Home Page"
 +++
 
@@ -23,4 +23,4 @@ We believe in moving Apps to PCF.
 ![Cake Of Replatforming](/images/cake.png?height=480px)
 ![This is How We Roll](/images/roll.png?height=480px)
 
-{{% children description="true" style="h3" %}}
+{{% children description="true"  %}}
