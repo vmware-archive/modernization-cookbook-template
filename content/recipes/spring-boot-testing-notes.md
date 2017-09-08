@@ -6,6 +6,7 @@ summary = "Testing strategies recommendations."
 tags = ["[testing]", "[junit]", "[spring boot]"]
 title = "Spring Boot Testing Notes"
 taxonomy = ["TEST-DRIVEN-DEVELOPMENT"]
+review_status = ["DONE"]
 +++
 # General recommendations to keep in mind while writing spring boot tests.
 

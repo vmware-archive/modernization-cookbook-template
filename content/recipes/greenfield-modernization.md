@@ -6,6 +6,7 @@ summary = "Recipe Summary"
 tags = ["[modernization]", "[greenfield]"]
 title = "Using Greenfield Application to Drive Modernization"
 taxonomy = ["MODERNIZATION"]
+review_status = ["DONE"]
 +++
 
 ![facade](/documents/greenfield-modernization/Greenfield-Modernization.png)

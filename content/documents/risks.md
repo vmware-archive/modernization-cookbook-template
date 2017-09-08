@@ -6,6 +6,7 @@ summary = "Outlines possible risks affecting the delivery of the project."
 tags = ["[risks]"]
 title = "Risks"
 taxonomy = ["MODERNIZATION"]
+review_status = ["DONE"]
 +++
 
 1. Does the _High/Med/Low_ designation indicate impact or probability of occurring?

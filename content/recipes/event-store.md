@@ -6,6 +6,7 @@ summary = "Event Store"
 tags = ["[cqrs]"]
 title = "Event Store"
 taxonomy = ["MODERNIZATION"]
+review_status = ["DONE"]
 +++
 
 ## Components

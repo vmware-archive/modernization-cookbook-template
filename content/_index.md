@@ -19,8 +19,8 @@ We believe in moving Apps to PCF.
 - Build Skills by Pairing and Doing
 - Let Real Work Inform Strategy
 
-![Cloud Native Continuum](/images/continuum.png)
-![Cake Of Replatforming](/images/cake.png)
-![This is How We Roll](/images/roll.png)
+![Cloud Native Continuum](/images/continuum.png?height=480px)
+![Cake Of Replatforming](/images/cake.png?height=480px)
+![This is How We Roll](/images/roll.png?height=480px)
 
 {{% children description="true" style="h3" %}}
