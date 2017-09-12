@@ -6,15 +6,17 @@ This is a [Hugo](https://github.com/gohugoio/hugo) site. It is driven by markdow
 
 Hosted on PWS: https://modernization-template.cfapps.io/
 
-# What makes a good recipe
-0. Make it customer agnostic
-1. Make it customer agnostic
-2. Start from this repository https://github.com/pivotalservices/modernization-cookbook-template
-3. Prefer markdown over asciidoc or doc or docx to write recipes.
-4. Categorize your recipe from one of the following by adding one of the categories in the taxonomy below this in the front-matter markup `taxonomy = ["API-FIRST"]`
+# What makes a good recipe cookbook
+0. **Make it customer agnostic.** No customer or customer project names in the recipes. Do not name recipe files with customer or customer project names.
+2. Start from this repository
+ https://github.com/pivotalservices/modernization-cookbook-template
+3. Prefer `markdown` over `asciidoc`. Definitely don't write recipes in doc or docx.
+4. Use TOML instead of `JSON` or `YAML` in the frontmatter.
+4. Categorize your recipe from one of the following by adding one of the categories in the taxonomy below this in the front-matter markup like `taxonomy = ["API-FIRST"]`
 5. Put all markdown files in the `content/recipes` and `content/documents`
 6. Put good camel case title in `title=xxx` front matter to be automatically picked up by landing pages
 7. Add `taxonomy=["CLIENT"]` to exclude the rendering of the recipe/doc or add `review_status = ["DONE"]` to get it published externally.
+8. If in doubt look at the recipes in this template repo.
 
 ## Taxonomy
 1. **REPLATFORMING**  fa-cloud-upload "Best practices and tips for replatforming applications"
@@ -36,7 +38,7 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 17. **DAY2-OPS** "Operating an app in production."
 18. **GENERAL** "General uncategorized recipes"
 19. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
-20. **CLIENT** Do NOT publish this recipe internally or externally in any aggregated cookbook. 
+20. **CLIENT** Do NOT publish this recipe internally or externally in any aggregated cookbook.
 
 ## Getting Started
 
