@@ -51,4 +51,6 @@ a:visited {
 .headline {
     border-top: 1px dashed #183f81;
     font-size:smaller;
+    font-weight: bold;
+    color: #0B4D48;
 }
