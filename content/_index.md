@@ -4,10 +4,9 @@ title = "Introduction"
 description = "Default Home Page"
 +++
 
-# Application Transformation Cookbook
-
-### _**INTERNAL ONLY**_
----
+## Application Transformation Cookbook
+ _**INTERNAL ONLY**_
+{{% disclaimer %}}
 
 ## Recipes, documents & code snippets to replatform and modernize apps to Cloud Foundry.
 
@@ -23,4 +22,4 @@ We believe in moving Apps to PCF.
 ![Cake Of Replatforming](/images/cake.png?height=480px)
 ![This is How We Roll](/images/roll.png?height=480px)
 
-{{% children description="true"  %}}
+{{% children  %}}

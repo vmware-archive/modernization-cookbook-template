@@ -47,3 +47,8 @@ a:visited {
     background: #686868;
     border-color: #8d8e8e;
 }
+
+.headline {
+    border-top: 1px dashed #183f81;
+    font-size:smaller;
+}
