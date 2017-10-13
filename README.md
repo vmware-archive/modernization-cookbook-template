@@ -47,11 +47,48 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 - Install `hugo`
   - With homebrew (Mac): `brew update && brew install hugo`
   - Manual download: https://github.com/gohugoio/hugo/releases
-- Clone this repo with the `--recursive` flag to include the theme, which is a submodule:
+- Clone this repo with the `--recursive` flag to include the theme, which is a submodule. For convenience, add the name of cookbook now to match the name of the GitHub repository in `pivotalservices` :
 ```
-git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive
+git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive <enter customer name with -cookbook suffix>
 ```
 - Alternatively, fetch the theme manually: `git submodule update --init --recursive`
+
+### Initial Setup of New Customer Cookbook
+The following steps will walk you through the process of creating a new GitHub repository with the modernization template and wipe out all the commit history associated to the modernization template so you can start fresh in your new cookbook repository.
+
+1. Create a new private GitHub repository in `pivotalservices` with the name of the customer with cookbook suffix ex. `mastercard-cookbook`
+
+1. Clone this repo with the `--recursive` flag to include the theme, which is a submodule. For convenience, add the name of cookbook now to match the name of the GitHub repository you created in step 1:
+`git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive <enter customer name with -cookbook suffix>`
+
+1. Remove the remote origin:
+`git remote remove origin`
+
+1. Add the new remote origin:
+`git remote add origin https://github.com/user/repo.git`
+
+1. Create a new unparented branch:
+`git checkout --orphan cookbook`
+
+1. Add all tracked and untracked files:
+`git add -A`
+
+1. Commit the files:
+`git commit -m "Initial Commit"`
+
+1. Delete master branch:
+`git branch -D master`
+
+1. Move/renam `cookbook` branch to master:
+`git branch -m master`
+
+1. Push the code and set the upstream flag for git/pull status:
+`git push -f --set-upstream origin master`
+
+1. Aggressively prune unreferenced objects:
+`git gc --aggressive --prune=all`
+
+1. Update the README and clean up existing content as needed
 
 ### Run locally (default: `localhost:1313`)
 ```
