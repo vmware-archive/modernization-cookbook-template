@@ -79,7 +79,7 @@ The following steps will walk you through the process of creating a new GitHub r
 1. Delete master branch:
 `git branch -D master`
 
-1. Move/renam `cookbook` branch to master:
+1. Move/rename `cookbook` branch to master:
 `git branch -m master`
 
 1. Push the code and set the upstream flag for git/pull status:
