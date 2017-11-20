@@ -4,22 +4,21 @@ title = "Introduction"
 description = "Default Home Page"
 +++
 
-## Application Transformation Cookbook
- _**INTERNAL ONLY**_
-{{% disclaimer %}}
+# Application Transformation Cookbook
 
-## Recipes, documents & code snippets to replatform and modernize apps to Cloud Foundry.
+### _**INTERNAL ONLY**_
+---
 
-We believe in moving Apps to PCF.
-- Plan Just Enough to Start
-- Start With “One Thing”
-- Break Big Things into Small Things
-- Automate Everything You Can
-- Build Skills by Pairing and Doing
-- Let Real Work Inform Strategy
+## Recipes to replatform and modernize apps to Cloud Foundry.
+
+We believe in moving Apps to PCF. Plan Just Enough to Start. Start With “One Thing”. Break Big Things into Small Things. Automate Everything You Can. Build Skills by Pairing and Doing. Let Real Work Inform Strategy. A smattering of recently added recipes can be found below.
+
+
+{{% latestrecipes  %}}
+
 
 ![Cloud Native Continuum](/images/continuum.png?height=480px)
 ![Cake Of Replatforming](/images/cake.png?height=480px)
 ![This is How We Roll](/images/roll.png?height=480px)
 
-{{% children  %}}
+{{% children description="true"  %}}
