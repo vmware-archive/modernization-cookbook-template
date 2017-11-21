@@ -1,0 +1,6 @@
+{{ $thisSection := $.Page.Section }}
+{{ range first 10 (where .Site.RegularPages.ByDate.Reverse "Section" $thisSection) }}
+<li>
+	{{ .Date.Format "01-02-2006" }} - <a href="{{ .Permalink }}">{{ .Title }}</a>
+</li>
+{{ end }}
