@@ -38,7 +38,8 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 17. **DAY2-OPS** "Operating an app in production."
 18. **GENERAL** "General uncategorized recipes"
 19. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
-20. **CLIENT** Do NOT publish this recipe internally or externally in any aggregated cookbook.
+20  **PKS** "Recipes to do with PKS, Lift & Shift and AppTx".
+21 **CLIENT** fa-minus-circle "Internal Only - Client specific recipes"
 
 ## Getting Started
 
