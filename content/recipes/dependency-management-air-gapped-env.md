@@ -21,6 +21,8 @@ One of the easier ways to find this information is to unpack the war file and lo
 
 Dependencies identified in previous step can be loaded to local maven _.m2_ repository using [mvn install:install-file](https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html) commands.  It is useful to create a script that performs this step for all libraries.
 
+This repository will need to be uploaded to company owned repository. [jFrog Artifactory](https://www.jfrog.com/artifactory/) or [Nexus Repository Manager](https://www.sonatype.com/nexus-repository-sonatype) is a good choice.
+
 ## Use recommended directory structure for web applications.
 
 Copy all sources to directories as defined by [standard web application directory layout.](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)  It is recommended to use [Spring Starters](https://start.spring.io/) for Spring Boot applications.  Alternatively, one can locate [Maven Archetype](https://maven.apache.org/archetypes/) appropriate for the use case.
