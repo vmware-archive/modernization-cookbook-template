@@ -1,8 +1,8 @@
 +++
 categories = ["recipes"]
 tags = ["[java]", "[jms]", "[embedded]"]
-summary = "Recipe Summary"
-title = "Embedded Jms Provider"
+summary = "Run embedded JMS provider."
+title = "Embedded Jms Provider."
 date = 2017-11-30T12:11:35-05:00
 +++
 
