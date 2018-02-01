@@ -22,4 +22,4 @@ home = [ "HTML", "RSS", "JSON"]
 pre = "<h3>More</h3>"
 name = "<i class='fa fa-windows'></i>  DotNet Cookbook"
 identifier = "ds"
-url = "https://dotnet-cookbook.cfapps.pez.pivotal.io/intro/"
+url = "https://dotnet-cookbook.cfapps.io/intro/"
