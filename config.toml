@@ -1,17 +1,22 @@
 baseURL = "/"
 languageCode = "en-us"
+DefaultContentLanguage = "en"
 title = "Template App Migration Recipes"
-copyright = "@2017, Pivotal Software, Inc. All Rights Reserved, Confidential"
+copyright = "@2018, Pivotal Software, Inc. All Rights Reserved, Confidential"
 theme = "hugo-theme-docdock"
 publishDir = "public"
 googleAnalytics = "GOOGLE_TRACKER_ID"
+pygmentsCodeFences = true
+pygmentsStyle = "friendly"
 
 [params]
+  themeStyle = "original"
+  disableHomeIcon = true
   description = "Migrating applications to Cloud Foundry."
   noCategoryLink = true
   showVisitedLinks = false
   noSearch = false
-  noHomeIcon = false
+  noHomeIcon = true
   ordersectionsby = "weight"
   ignoreFiles = [ "\\.adoc$" ]
 

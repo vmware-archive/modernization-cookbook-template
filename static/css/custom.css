@@ -26,15 +26,11 @@
   background-color: #243641;
 }
 
-#body a.highlight {
+#body a {
   text-decoration: underline;
 }
 
 a {
-  color: #138078;
-}
-
-a:visited {
   color: #0B4D48;
 }
 
@@ -53,4 +49,8 @@ a:visited {
     font-size:smaller;
     font-weight: bold;
     color: #0B4D48;
+}
+
+body strong {
+    font-family: "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
 }
