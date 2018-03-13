@@ -1,4 +1,4 @@
-[![wings.concourse-ci.org](https://wings.concourse-ci.org/api/v1/teams/PCFS/pipelines/modernization-template/jobs/compile-site/badge)](https://wings.concourse-ci.org/teams/PCFS/pipelines/modernization-template)
+[wings.concourse-ci.org](https://wings.concourse-ci.org/teams/PCFS/pipelines/modernization-template)
 
 # Template App Migration Dojo Cookbook Site
 
