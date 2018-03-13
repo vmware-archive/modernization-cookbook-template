@@ -39,7 +39,7 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 18. **GENERAL** "General uncategorized recipes"
 19. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
 20. **PKS** "Recipes to do with PKS, Lift & Shift and AppTx".
-21. **CLIENT** fa-minus-circle "Internal Only - Client specific recipes"
+21. **CLIENT** "Internal Only - Client specific recipes"
 22. **PATTERN** Buckets of Recipes
 
 ## Getting Started
