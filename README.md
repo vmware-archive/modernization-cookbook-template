@@ -1,4 +1,4 @@
-[![wings.concourse.ci](https://wings.concourse.ci/api/v1/teams/PCFS/pipelines/modernization-template/jobs/compile-site/badge)](https://wings.concourse.ci/teams/PCFS/pipelines/modernization-template)
+[![wings.concourse-ci.org](https://wings.concourse-ci.org/api/v1/teams/PCFS/pipelines/modernization-template/jobs/compile-site/badge)](https://wings.concourse-ci.org/teams/PCFS/pipelines/modernization-template)
 
 # Template App Migration Dojo Cookbook Site
 
@@ -40,6 +40,7 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 19. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
 20. **PKS** "Recipes to do with PKS, Lift & Shift and AppTx".
 21. **CLIENT** fa-minus-circle "Internal Only - Client specific recipes"
+22. **PATTERN** Buckets of Recipes
 
 ## Getting Started
 
