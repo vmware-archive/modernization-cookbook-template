@@ -6,7 +6,7 @@ summary = "Bootstraping Spring Boot Applications with Swagger Codegen"
 tags = ["swagger", "codegen", "spring boot", "feign"]
 title = "Use Swagger Codegen to generate Microservices."
 taxonomy = ["API-FIRST"]
-review_status = ["DONE"]
+review_status = ["IGNORED"]
 +++
 ## Overvew
 
