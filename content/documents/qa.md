@@ -6,7 +6,7 @@ summary = "Document summary"
 tags = ["[qa]"]
 title = "Modernization Questions"
 taxonomy = ["MODERNIZATION"]
-review_status = ["DONE"]
+review_status = ["IGNORED"]
 
 +++
 ### New vs Existing
