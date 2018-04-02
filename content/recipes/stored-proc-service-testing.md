@@ -4,6 +4,7 @@ tags = ["[foo]"]
 summary = "Recipe Summary"
 title = "Stored Proc Service Testing"
 date = 2017-10-18T13:28:40-04:00
+review_status = ["IGNORED"]
 +++
 
 Objective of the technique demonstrated is to verify execution of the sored procedures encapsulated in the service beans
