@@ -4,6 +4,7 @@ tags = ["[performance]", "[iBatis]", "[maven]"]
 summary = "Techniques to improve startup time of Spring/iBatis application."
 title = "Fix iBatis Startup and maven compile performance."
 date = 2017-11-28T09:02:35-05:00
+review_status = ["IGNORED"]
 +++
 
 Slow startup times affect development cycle and 12 factor compliance.
