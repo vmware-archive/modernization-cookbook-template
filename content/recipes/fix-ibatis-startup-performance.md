@@ -11,7 +11,7 @@ Slow startup times affect development cycle and 12 factor compliance.
 
 ## Guidelines to address slow startup.
 
-Turning off cashing, and turning on lazy load for local development and test environments.
+Turning off caching, and turning on lazy load for local development and test environments.
 
 ### Spring application context file.
 
