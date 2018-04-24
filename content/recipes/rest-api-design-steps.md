@@ -33,7 +33,7 @@ Following are details pertaining to the above steps that can be used to establis
 
 In terms of examples to help provide clarity, we will apply the following concepts to two example resources.  The first being a `customer` resource that would have a one-to-many relationship with an `order` resource.
 
-### Choosing Media Types
+### Choose Media Types
 
 #### Goal:
 Come to an agreement on what the standard media types would be for the project.  In the majority of the cases, this would simply be `application/json`.
@@ -157,7 +157,7 @@ When it comes to how a resource should be formatted, either it is given little t
 }
 ```
 
-### Choosing Methods
+### Choose Methods
 
 #### Goal:
 Come to an agreement on the strategy to implement when defining the HTTP verbs to support for URIs.
@@ -192,10 +192,10 @@ Spring boot provides support for OPTIONS so no additional coding is needed unles
 1) Use `POST` to collection resource to create, `POST` to a singular resource for partial updates, and `PUT` to singular resources for complete replace. <br>
 2) Only use `POST` to create and `PATCH` for updates.  While this strategy is more compliant with the HTTP spec, the former strategy tends to be more popular due to the complexity around using `PATCH`.
 
-### Choosing Response Status Codes
+### Select Response Status Codes
 
 #### Goal:
-The goal of this step is to ...
+Come to agreement on the HTTP Status Codes to use for successful, validation failure, and error responses.
 
 #### Notes:
 
@@ -238,10 +238,10 @@ Response Code | Notes
 
 > Redirect response status are typically leveraged when transitioning control from the API Application to a Web Application.  Generally a `302` status code would be used for these situations.
 
-### Using Headers
+### Define Headers
 
 #### Goal:
-The goal of this step is to ...
+Determine the custom headers to define for requests and responses.
 
 #### Notes:
 
@@ -272,22 +272,28 @@ The goal of this step is to ...
 
 > Query parameters are typically optional.  Defining query parameters that are required for a request is generally considered bad practice.
 
-### API Evolution Strategies
+### Define API Evolution Strategy
 
 #### Goal:
-The goal of this step is to ...
+The goal of this step is to determine how the APIs will evolve incrementally over sprint iterations.  Typically this would involve agreement on a versioning strategy.
+
+> First step in determining a version strategy is to come to agreement on the definition of a non-backward compatible change.
+A common approach is to adopt the [tolerant reader](https://martinfowler.com/bliki/TolerantReader.html) principle.  This can help mitigate
 
 #### non-versioning strategy
-TBD - details on why implementing a versioning mechanism should be avoided if at all possible and how that could be accomplished.
+
+> The non-versioning evolution entails always making enhancements to an API in a backwards compatible fashion.  In the event that this cannot be done, then a temporary version of the API is created and a process is initiated that would upgrade all consuming application to the latest version.  Once the process is completed, the legacy version is then removed.
+
+> Ideally an API could start without a versioning mechanism in place and one would not be implemented until it is determined for sure that it is needed.
 
 #### versioning strategy
 TBD - details on why a URL versioning mechanism should be avoided and why a date based custom header is advantageous.
 
-The following is a comment from Fielding in regards to using a url versioning mechanism.
 
-> **Roy T. Fielding** <br>
-> _@fielding_ <br>
-> The reason to make a real REST API is to get evolvability … a "v1" is a middle finger to your API customers, indicating RPC/HTTP (not REST)
+> The following is a comment from Fielding in regards to using a url versioning mechanism. <br>
+**Roy T. Fielding** <br>
+_@fielding_ <br>
+The reason to make a real REST API is to get evolvability … a "v1" is a middle finger to your API customers, indicating RPC/HTTP (not REST)
 
 ---
 
@@ -366,8 +372,6 @@ Age: 24
 ## Productionalization
 
 TBD - This section will provide details on what is typically needed in order to ensure an API is production ready.
-
-* Security
 
 * API Documentation
 
