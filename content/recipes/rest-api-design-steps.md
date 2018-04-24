@@ -355,6 +355,14 @@ GET /schemas/customers
 
 TBD - Research private Caching Strategies
 
+``` text
+GET /customer/123
+
+Cache-Control: s-max-age=300;stale-while-revalidate=600
+Vary: x-version
+Age: 24
+```
+
 ## Productionalization
 
 TBD - This section will provide details on what is typically needed in order to ensure an API is production ready.
