@@ -1,6 +1,6 @@
 +++
 categories = ["recipes"]
-tags = ["[foo]"]
+tags = ["[REST]"]
 summary = "Recipe Summary"
 title = "REST API Design Steps"
 date = 2018-04-23T16:30:30-05:00
@@ -8,11 +8,11 @@ date = 2018-04-23T16:30:30-05:00
 
 ## When to Use This Recipe
 
-This recipe should be followed when collaborating with client on a project that requires designing a new RESTful API.
+This recipe should be followed when collaborating with a client on a project that requires designing a new RESTful API.
 
 ## Overview
 
- When the event arises for the implementation of a RESTful API, the following steps could be followed to help drive out an overall design strategy.  In some cases, the project may entail multiple teams implementing multiple applications that include the creation of RESTful APIs.  Before implementation of APIs begin, a representative from the various teams across the project would ideally agree upon an overall API design strategy.  The goal being that at the conclusion of the project, all RESTful APIs implemented as part of the project work in a consistent fashion.
+ When the event arises for the implementation of a RESTful API, the following steps could be followed to help drive out an overall design strategy.  In some cases, the project may entail multiple teams implementing multiple applications that include the creation of RESTful APIs.  Before implementation of APIs begin, a representative from the various teams across the project would ideally agree upon an overall API design strategy.  The goal being that at the conclusion of the project, all RESTful APIs implemented as part of the project work in a consistent fashion and the client is enabled to evolve the APIs independently.
 
  The first walkthrough of the steps listed below may take some additional effort.  However, the intent of the initial walk through would not be to perform a large up front API design.  Rather, the goal would be to agree on an overall API Design strategy based primarily on the requirements that are known.  As requirements are refined or added or as additional APIs stories arise, these steps could be repeated as a way to incrementally refine the overall API design strategy for the project.  Subsequent walkthrough of these steps would be easier since the purpose would be to identify the aspects of the design strategy needing refinement.
 
@@ -33,13 +33,18 @@ Following are details pertaining to the above steps that can be used to establis
 
 In terms of examples to help provide clarity, we will apply the following concepts to two example resources.  The first being a `customer` resource that would have a one-to-many relationship with an `order` resource.
 
+The following terms will be used going forward to describe two types of resources.
+
+- Collection Resources (ie `/customers`)
+- Singular Resources (ie `/customers/{id}`)
+
 ### Choose Media Types
 
 #### Goal:
-Come to an agreement on what the standard media types would be for the project.  In the majority of the cases, this would simply be `application/json`.
+Come to an agreement on what the standard media types would be for the project.
 
 #### Notes:
-Other media types occasionally can be useful such as:
+In the majority of the cases, this would simply be `application/json`, but occasionally other media types occasionally can be useful such as:
 
 - `application/x-www-form-urlencoded`
 - `multipart/form-data`
@@ -49,17 +54,17 @@ Even though spring boot has nice support for it, using Hypermedia Types such as 
 ### URI Design
 
 #### Goal:
-Establish the principles that would be used to define the URI for resources.
+Establish the principles that would be used to define the URIs for resources.
 
 #### Notes:
 
-> Use '-' to separate words.  If resource format is snake case, then use '_'.
-
-> There are two basic types of resources.  Collection Resources (ie `/customers`) and Singular Resources (ie `/customers/{id}`).
-
 > URIs should be described using nouns.  Plural nouns to describe collection resources.  Singular resources most often will be referenced via an identifier.  However, in the case where only one resource can exist, then use a singular noun.
 
-> Traditionally a URI for orders would potentially something like `/apiname/context/v1/customers/{id}/orders`. More recently however, it is becoming more common to split the URIs into separate URIs such as `/customers` and `/orders`.
+> Traditionally a URI for orders would potentially something like `/apiname/context/v1/customers/{id}/orders`. More recently however, it is becoming more common to attempt to simplify as much as possible and to split into separate URIs such as `/customers` and `/orders`.
+
+> URIs are not case sensitive.  As a result, if the resource name contains multiple words, then a '-' would typically be used to separate the words.  However, if the format of the resource is snake case, then '\_' tends to be more common.
+
+> TODO: warn against URI collisions (ie /orders/{id} and /orders/count)
 
 #### Examples:
 
@@ -77,11 +82,11 @@ The goal of this step is to establish how request and response content should be
 
 #### Notes:
 
-> Resource content generally is provided only for `POST`, `PUT`, and `PATCH` requests.  The HTTP spec supports content to be provided for `DELETE` requests, but this practice is generally discouraged.  `GET` requests can at times be a point of contention since it is somewhat unclear in the HTTP spec if `GET`s are allowed to have request content.  This issue tends to arise for APIs that provide complex searching functionality.
+> Resource content generally is provided only for `POST`, `PUT`, and `PATCH` requests.  The HTTP spec supports content to be provided for `DELETE` requests, but this practice is generally discouraged.  `GET` requests can at times be a point of contention since it is somewhat unclear in the HTTP spec if `GET`s are allowed to have request content, but this would be discouraged as well.  This issue tends to arise for APIs that provide complex searching functionality.
 
 > Resource content provided in the request generally should match what is returned in the response.  The only exception is for attributes that are defined in the schema as read only.  It is discouraged to define attributes for the request that would never be returned in the response. In addition, the type of resource returned should be the type as what was provided.  For example, a `POST /customers/{id}` would be provided a customer resulting in a customer to be returned instead of a collection of customers.
 
-> The general rule to use to determine when to return response content is that if the response content would match the request content, then no response content should be returned.  In this situation, a `204` status should be returned.  However, a single URI returning multiple successful response status should be avoided.  A good rule to follow is that if in doubt, then always return response content.
+> The general rule to use to determine when to return response content is that if the response content would match the request content, then no  content would need to be returned.  In this situation, a `204` status should be returned.  However, a single URI returning multiple successful response status should be avoided.
 
 > It is strongly discouraged to provide a `links` attribute as part of resource response content for `application/json` media types.
 
@@ -124,8 +129,9 @@ The following example shows the basic structure for a collection resource with p
 
 **Error Responses** <br>
 
-There are certainly a number of valid ways to design error response content.  General recommendations would be to a list of errors so that multiple errors could be returned if multiple aspects of the request failed validation.  Also, it can be beneficial for each error to have a `code` and `subcode` attribute. Having a `subcode` attribute can help mitigate the creation of a new version of the API since the creation of a new code value could be considered a non-backward compatible change.  A `description` may also be needed if a localized (based on the `accept-language` header) needs to be provided.
+There are certainly a number of valid ways to design error response content.  General recommendations would be to provide errors as list so that multiple errors could be returned if multiple aspects of the request failed validation.  Also, it can be beneficial for each error to have a `code` and `subcode` attribute. Having a `subcode` attribute can help mitigate the creation of a new version of the API since the creation of a new code value could be considered a non-backward compatible change.  A `description` may also be needed if a localized (based on the `accept-language` header) needs to be provided.
 
+**Example**
 ``` json
 [
   {
@@ -143,24 +149,12 @@ There are certainly a number of valid ways to design error response content.  Ge
 
 **Resource Formatting**
 
-When it comes to how a resource should be formatted, either it is given little to no thought or it becomes a subject of all out holy war. In essence, there are two competing models which are camelCase or snake_case.  The format that is typically chosen is more often than not the result of the language being used to produce the API.  Important to note that there is no standard so there really isn't any wrong choice. Snake case actually seems to becoming the more popular format amongst newer APIs.
-
-``` json
-{
-  "id": "7877a21a721f0fe399dc6f1086a45892",
-  "first_name": "Sam",
-  "last_name": "Spurlock",
-  "user_name": "sspurlock",
-  "email": "sspurlock@exampleorg.com",
-  "locale": "en",
-  "created": "2009-04-15T00:50:04Z"
-}
-```
+When it comes to how a resource should be formatted, either it is given little to no thought or it becomes a subject of all out holy war. In essence, there are two competing models which are camelCase or snake_case.  The format that is typically chosen is more often than not the result of the language being used to produce the API.  However, it would be good to consider the consuming application(s) preference.  Important to note that there is no standard so there really isn't any wrong choice although snake case seems to becoming the more popular format amongst newer APIs.
 
 ### Choose Methods
 
 #### Goal:
-Come to an agreement on the strategy to implement when defining the HTTP verbs to support for URIs.
+Come to an agreement on the strategy to use when determining the HTTP verbs to support for URIs.
 
 #### Notes:
 
@@ -249,7 +243,7 @@ Determine the custom headers to define for requests and responses.
 
 **Request Headers**
 
-> In general, the implementation of custom request headers should be rare.
+> In general, the implementation of custom request headers should be rare with the exception of versioning.
 
 **Response Headers**
 
@@ -260,17 +254,31 @@ Determine the custom headers to define for requests and responses.
 ### Query Parameter Design
 
 #### Goal:
-The goal of this step is to ...
+Define a strategy for naming of query parameters, guidelines around how and when they would be used, and determine names for commonly used query parameters for things such as sorting.
 
 #### Notes:
 
-> Query parameters are generally defined only for `GET` requests.  Defining query parameters for other methods is generally considered bad practice.  However, `POST`s that support query parameters so that request content need not be provided can help simplify web applications that consume API responses.
+> Query parameters are generally defined only for `GET` requests and tend to be used more predominately with collection resources. Defining query parameters for other methods is generally considered bad practice. However, `POST`s that support query parameters so that request content need not be provided can help simplify web applications that consume API responses.
 
 > In order for an API to remain intuitive and easy to learn, it is advantageous to refrain from implementing action query parameters.
+
+> A common approach is to have query parameters where the name matches one of the attributes in the resource in order to provide collection resource filtering.
 
 > When pagination is needed for a collection resources, generally recommended to use `limit` and `offset` query parameters.
 
 > Query parameters are typically optional.  Defining query parameters that are required for a request is generally considered bad practice.
+
+### Examples
+
+Example request to check if a customer exists for a given `username`.  The response would always be a collection resource.  An empty collection would be returned if no customers were found.  A `404` error should not occur in that case.
+``` text
+GET /customers?username={name}
+```
+
+Example request to pull a given number of orders over a specified amount
+``` text
+GET /orders?amount>{amount}&limit={limit}
+```
 
 ### Define API Evolution Strategy
 
@@ -278,19 +286,23 @@ The goal of this step is to ...
 The goal of this step is to determine how the APIs will evolve incrementally over sprint iterations.  Typically this would involve agreement on a versioning strategy.
 
 > First step in determining a version strategy is to come to agreement on the definition of a non-backward compatible change.
-A common approach is to adopt the [tolerant reader](https://martinfowler.com/bliki/TolerantReader.html) principle.  This can help mitigate
+A common approach is to adopt the [tolerant reader](https://martinfowler.com/bliki/TolerantReader.html) principle.  This can help mitigate the creation of new versions.
 
-#### non-versioning strategy
+#### Non-versioning strategy
 
-> The non-versioning evolution entails always making enhancements to an API in a backwards compatible fashion.  In the event that this cannot be done, then a temporary version of the API is created and a process is initiated that would upgrade all consuming application to the latest version.  Once the process is completed, the legacy version is then removed.
+> The non-versioning strategy entails always making enhancements to an API in a backwards compatible fashion.  In the event that this cannot be done, then a temporary version of the API is created and a process is initiated that would upgrade all consuming application to the latest version.  Once the process is completed, the legacy version is then removed.
 
-> Ideally an API could start without a versioning mechanism in place and one would not be implemented until it is determined for sure that it is needed.
+> Ideally an API could start without a versioning mechanism in place and one would not be implemented until the time one is actually needed.
 
-#### versioning strategy
-TBD - details on why a URL versioning mechanism should be avoided and why a date based custom header is advantageous.
+#### Versioning strategy
 
+> There are number of common API versioning strategies that can found.  One of these is a strategy based on a custom header approach where the value is a date.  How the date is determined can be done a few ways.  
 
-> The following is a comment from Fielding in regards to using a url versioning mechanism. <br>
+> One approach is to have the consuming application always provide it as part of every request.  Another approach is to have a gateway application (such as Spring Cloud Gateway) that captures the event of the first request and store the date with the associated principal.
+
+> Regardless of how the header is determined, the version header approach works nicely since it allows for specific aspects of the API to be versioned rather than having to version the entire API.  It also plays well with gateway applications that perform orchestration since the gateway would not need to know anything about what versions exists for each origin service.  Lastly, this versioning strategy would need to be implemented until the time a versioning mechanism is needed.
+
+> Using a URL based versioning strategy is losing popularity and should be avoided. The following is a comment from Fielding reflects his view on this approach. <br>
 **Roy T. Fielding** <br>
 _@fielding_ <br>
 The reason to make a real REST API is to get evolvability … a "v1" is a middle finger to your API customers, indicating RPC/HTTP (not REST)
@@ -299,14 +311,16 @@ The reason to make a real REST API is to get evolvability … a "v1" is a middle
 
 ## JSON Schema
 
-TBD - Provide recommendations regarding how JSON schema could be leveraged.
+> JSON Schema can be leveraged far differently than the old days of XML Schema.  Rather than the schema being a static file manually provided to consuming application, it can instead by provided via an API of its own which can dynamically vary between requests.  
+
+> Implementing JSON Schema APIs can involve a fairly low level of effort.  One way it can be defined is to first define the schema using swagger.  The Java POJO can the be generated from the swagger and the JSON Schema can be generated from the POJO to be returned by the schema API.  Before being returned, the API Application can choose to dynamically alter the schema based on information provided in the request.
 
 ``` text
 GET /schemas/customers
 ```
 ``` json
 {
-	"$id": "https://example.com/schemas/customers",
+	"$id": "https://example.pcf.io/schemas/customers",
 	"type": "object",
 	"title": "Customer",
 	"properties": {
@@ -359,7 +373,7 @@ GET /schemas/customers
 
 ## Caching
 
-TBD - Research private Caching Strategies
+TODO - Research private Caching Strategies
 
 ``` text
 GET /customer/123
@@ -371,11 +385,43 @@ Age: 24
 
 ## Productionalization
 
-TBD - This section will provide details on what is typically needed in order to ensure an API is production ready.
+TODO - This section will provide details on what is typically needed in order to ensure an API is production ready.
 
 * API Documentation
 
 * Logging
+
+Example JSON log record that would pipe into logstash
+``` json
+{
+	"@timestamp": "2017-05-24T12:03:27.926Z",
+	"cache": "VALIDATED",
+	"request": {
+		"path": "/orders/1",
+		"method": "GET",
+		"headers": {
+			"remote_ip": "92.168.124.59",
+			"Accept": "application/json",
+      "host": "example.pcfbeta.io",
+      "User-Agent": "curl/7.54.0"
+		}
+	},
+	"response": {
+		"code": 200,
+		"headers": {
+			"Content-Length": "100",
+			"Content-Type": "application/json; charset=UTF-8",
+			"Cache-Control": "s-max-age=300;stale-while-revalidate=600",
+			"Vary": "x-version",
+			"Age": "0",
+			"Date": "Mon, 01 May 2017 13:08:38 GMT",
+			"X-Application-Context": "spring-app:cloud:0",
+			"x-vcap-request-id": "3f532d170112fc5b2a0b94fcbd6493b3",
+			"x-resource": "ORDER"
+		}
+	}
+}
+```
 
 * Monitoring
 
