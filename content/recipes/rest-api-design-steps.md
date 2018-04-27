@@ -129,7 +129,9 @@ The following example shows the basic structure for a collection resource with p
 
 **Error Responses** <br>
 
-There are certainly a number of valid ways to design error response content.  General recommendations would be to provide errors as list so that multiple errors could be returned if multiple aspects of the request failed validation.  Also, it can be beneficial for each error to have a `code` and `subcode` attribute. Having a `subcode` attribute can help mitigate the creation of a new version of the API since the creation of a new code value could be considered a non-backward compatible change.  A `description` may also be needed if a localized (based on the `accept-language` header) needs to be provided.
+There are certainly a number of valid ways to design error response content.  General recommendations would be to ensure that all errors have a unified format. provide errors in a way that would accommodate multiple errors to be returned in case multiple aspects of the request failed validation.
+
+It can be beneficial for each error to have a `code` and `subcode` attribute. Having a `subcode` attribute can help mitigate the creation of a new version of the API since the creation of a new code value could be considered a non-backward compatible change.  A `localizedMessage` may also be needed if a localized (based on the `accept-language` header) needs to be provided.
 
 **Example**
 ``` json
@@ -137,14 +139,31 @@ There are certainly a number of valid ways to design error response content.  Ge
   {
     "code": "error-code-1",
     "subcode": "sub-error-code-1",
-    "description": "Première erreur d'exemple"
+    "description": "",
+    "localizedMessage": "Première erreur d'exemple"
   },
   {
     "code": "error-code-2",
     "subcode": "sub-error-code-2",
-    "description": "Deuxième exemple d'erreur"
+    "description": "",
+    "localizedMessage": "Deuxième exemple d'erreur"
   }
 ]
+```
+
+``` json
+{
+  "code": "error-code-1",
+  "description": "",
+  "localizedMessage": "Première erreur d'exemple",
+  "subErrors:" [
+    {
+      "code": "error-code-2",
+      "description": "",
+      "localizedMessage": "Deuxième exemple d'erreur"
+    }
+  ]
+}
 ```
 
 **Resource Formatting**
@@ -212,9 +231,9 @@ Response Code | Notes
 Response Code | Notes
 ------------ | -------------
 400 | The request was not structured correctly and did not conform to the resource schema.
-401 | TBD
-403 | TBD
-404 | TBD
+401 | Request failed authorization validation.
+403 | Request failed authentication validation.
+404 | Resource could not be found for the request.
 409 | The request was structured correctly, but was rejected by the server as a result of business rule validation.
 405<br>406<br>415 | Invalid method, accept header, or content media type.  Spring boot framework handles all these out of box and no custom logic should be needed to support these.
 429 | Status returned for throttling or rate limiting errors detected by a gateway proxy application.
@@ -320,7 +339,7 @@ GET /schemas/customers
 ```
 ``` json
 {
-	"$id": "https://example.pcf.io/schemas/customers",
+	"$id": "https://example.pcf.io/schemas/customer",
 	"type": "object",
 	"title": "Customer",
 	"properties": {
@@ -329,14 +348,12 @@ GET /schemas/customers
 			"readOnly": true
 		},
 		"firstName": {
-			"$id": "/properties/firstName",
 			"type": "string",
 			"title": "First Name"
 		},
 		"lastName": {
 			"type": "string",
-			"title": "Last Name",
-			"default": ""
+			"title": "Last Name"
 		},
 		"username": {
 			"type": "string",
@@ -376,7 +393,7 @@ GET /schemas/customers
 TODO - Research private Caching Strategies
 
 ``` text
-GET /customer/123
+GET /customers/123
 
 Cache-Control: s-max-age=300;stale-while-revalidate=600
 Vary: x-version
@@ -385,25 +402,31 @@ Age: 24
 
 ## Productionalization
 
-TODO - This section will provide details on what is typically needed in order to ensure an API is production ready.
+This section will provide details on what is typically needed in order to ensure an API is production ready.
 
-* API Documentation
+1. Logging
+1. Monitoring & Alerting
+1. Reporting
+1. API Documentation
 
-* Logging
+Monitoring, alerting, and reporting can be built upon the logging solution.  Using Spring Cloud Gateway as a proxy for all APIs, the gateway can provide the logging solution.
 
-Example JSON log record that would pipe into logstash
+### Logging
+
+Example JSON log record that would pipe into logstash.
 ``` json
 {
 	"@timestamp": "2017-05-24T12:03:27.926Z",
 	"cache": "VALIDATED",
+	"took": 55,
 	"request": {
-		"path": "/orders/1",
+		"path": "/customers/123456789",
 		"method": "GET",
+		"clientip": "92.168.124.59",
 		"headers": {
-			"remote_ip": "92.168.124.59",
 			"Accept": "application/json",
-      "host": "example.pcfbeta.io",
-      "User-Agent": "curl/7.54.0"
+			"host": "example.pcfbeta.io",
+			"User-Agent": "curl/7.54.0"
 		}
 	},
 	"response": {
@@ -417,14 +440,34 @@ Example JSON log record that would pipe into logstash
 			"Date": "Mon, 01 May 2017 13:08:38 GMT",
 			"X-Application-Context": "spring-app:cloud:0",
 			"x-vcap-request-id": "3f532d170112fc5b2a0b94fcbd6493b3",
-			"x-resource": "ORDER"
+			"x-resource": "CUSTOMER"
 		}
 	}
 }
 ```
 
-* Monitoring
+### Monitoring & Alerting
 
-* Alerting
+The following is a list of features that a Monitoring and Alerting solution would provide.
 
-* Reporting
+- Spikes in 4XX errors
+- 5XX error count exceed tolerable thresholds
+- Average response times exceed tolerable thresholds
+
+### Reporting
+
+Below is a table that contains an example of the data that would included as part of a report for an API.
+
+Resource | Count | Method | Status | Cache | Average Response Time (ms) | 90th Percentile (ms)
+--- | --- | --- | --- | --- | --- | ---
+CUSTOMER | 1000 | GET | 200 | HIT | 5 | 10
+CUSTOMER | 200 | GET | 200 | VALIDATED | 100 | 200
+CUSTOMER | 100 | GET | 200 | MISS | 100 | 200
+CUSTOMER | 5 | GET | 503 | MISS | 5 | 10
+CUSTOMER | 1000 | POST | 200 | MISS | 100 | 200
+CUSTOMER | 100 | POST | 409 | MISS | 50 | 100
+CUSTOMER | 5 | POST | 500 | MISS | 50 | 100
+
+### API Documentation
+
+Generally defined using swagger or RAML.  "Try it out" features should be sent to a mock service rather than the actual service.  The API docs from each of the applications across the project ideally would be pulled together to be provided by a single dev portal.
