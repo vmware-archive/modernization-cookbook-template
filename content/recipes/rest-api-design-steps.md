@@ -8,7 +8,7 @@ date = 2018-04-23T16:30:30-05:00
 
 ## When to Use This Recipe
 
-This recipe should be followed when collaborating with a client on a project that requires designing a new RESTful API.
+This recipe should be followed when collaborating on a project that requires designing new RESTful APIs.
 
 ## Overview
 
@@ -60,11 +60,11 @@ Establish the principles that would be used to define the URIs for resources.
 
 > URIs should be described using nouns.  Plural nouns to describe collection resources.  Singular resources most often will be referenced via an identifier.  However, in the case where only one resource can exist, then use a singular noun.
 
-> Traditionally a URI for orders would potentially something like `/apiname/context/v1/customers/{id}/orders`. More recently however, it is becoming more common to attempt to simplify as much as possible and to split into separate URIs such as `/customers` and `/orders`.
+> Traditionally a URI for orders would potentially look something like `/apiname/context/v1/customers/{id}/orders`. More recently however, it is becoming more common to attempt to simplify the URI as much as possible and to split into separate URIs such as `/customers` and `/orders`.
 
 > URIs are not case sensitive.  As a result, if the resource name contains multiple words, then a '-' would typically be used to separate the words.  However, if the format of the resource is snake case, then '\_' tends to be more common.
 
-> TODO: warn against URI collisions (ie /orders/{id} and /orders/count)
+> URI collisions should attempt to be avoided if possible.  For example, defining two URIs such as /orders/{id} and /orders/count.
 
 #### Examples:
 
@@ -84,7 +84,7 @@ The goal of this step is to establish how request and response content should be
 
 > Resource content generally is provided only for `POST`, `PUT`, and `PATCH` requests.  The HTTP spec supports content to be provided for `DELETE` requests, but this practice is generally discouraged.  `GET` requests can at times be a point of contention since it is somewhat unclear in the HTTP spec if `GET`s are allowed to have request content, but this would be discouraged as well.  This issue tends to arise for APIs that provide complex searching functionality.
 
-> Resource content provided in the request generally should match what is returned in the response.  The only exception is for attributes that are defined in the schema as read only.  It is discouraged to define attributes for the request that would never be returned in the response. In addition, the type of resource returned should be the type as what was provided.  For example, a `POST /customers/{id}` would be provided a customer resulting in a customer to be returned instead of a collection of customers.
+> Resource content provided in the request generally should match what is returned in the response.  The only exception is for attributes that are defined in the schema as read only.  It is discouraged to define attributes for the request that would never be returned in the response. In addition, the type of resource returned should be the same type as what was provided.  For example, a `POST /customers/{id}` would be provided a customer resulting in a customer to be returned instead of a collection of customers.
 
 > The general rule to use to determine when to return response content is that if the response content would match the request content, then no  content would need to be returned.  In this situation, a `204` status should be returned.  However, a single URI returning multiple successful response status should be avoided.
 
@@ -129,7 +129,7 @@ The following example shows the basic structure for a collection resource with p
 
 **Error Responses** <br>
 
-There are certainly a number of valid ways to design error response content.  General recommendations would be to ensure that all errors have a unified format. provide errors in a way that would accommodate multiple errors to be returned in case multiple aspects of the request failed validation.
+There are certainly a number of valid ways to design error response content.  General recommendations would be to ensure that all errors have a unified format and provide errors in a way that would accommodate multiple errors to be returned in case multiple aspects of the request failed validation.
 
 It can be beneficial for each error to have a `code` and `subcode` attribute. Having a `subcode` attribute can help mitigate the creation of a new version of the API since the creation of a new code value could be considered a non-backward compatible change.  A `localizedMessage` may also be needed if a localized (based on the `accept-language` header) needs to be provided.
 
@@ -139,36 +139,21 @@ It can be beneficial for each error to have a `code` and `subcode` attribute. Ha
   {
     "code": "error-code-1",
     "subcode": "sub-error-code-1",
-    "description": "",
+    "description": "short reason for the cause of error code 1",
     "localizedMessage": "Première erreur d'exemple"
   },
   {
     "code": "error-code-2",
     "subcode": "sub-error-code-2",
-    "description": "",
+    "description": "short reason for the cause of error code 2",
     "localizedMessage": "Deuxième exemple d'erreur"
   }
 ]
 ```
 
-``` json
-{
-  "code": "error-code-1",
-  "description": "",
-  "localizedMessage": "Première erreur d'exemple",
-  "subErrors:" [
-    {
-      "code": "error-code-2",
-      "description": "",
-      "localizedMessage": "Deuxième exemple d'erreur"
-    }
-  ]
-}
-```
-
 **Resource Formatting**
 
-When it comes to how a resource should be formatted, either it is given little to no thought or it becomes a subject of all out holy war. In essence, there are two competing models which are camelCase or snake_case.  The format that is typically chosen is more often than not the result of the language being used to produce the API.  However, it would be good to consider the consuming application(s) preference.  Important to note that there is no standard so there really isn't any wrong choice although snake case seems to becoming the more popular format amongst newer APIs.
+When it comes to how a resource should be formatted, either it is given little to no thought or it becomes a subject of all out holy war. In essence, there are two competing models which are `camelCase` or `snake_case`.  The format that is typically chosen is more often than not the result of the language being used to produce the API.  However, it would be good to consider the consuming application(s) preference.  Important to note that there is no standard so there really isn't any wrong choice although snake case seems to becoming the more popular format amongst newer APIs.
 
 ### Choose Methods
 
@@ -220,7 +205,7 @@ Come to agreement on the HTTP Status Codes to use for successful, validation fai
 
 Response Code | Notes
 ------------ | -------------
-200 | Service accepted the request or at least some portion of the request.<br>200 status is normally used for successful
+200 | Server accepted the request or at least some portion of the request.<br>200 status is normally used for successful
 201 | Resource created.  Location response header required to be returned.<br>If the state of the resource remains the same as what was provided in the request, then it is generally acceptable to return a 201 with no response content.  Otherwise, the 201 response should have the resource content returned;
 204 | Successful response when no response content needs to be returned.  Most commonly would be returned for `DELETE` requests.  Would also be valid for `PUT` or `POST`, but is normally preferable for those requests to provide the resource as part of the response.
 
@@ -235,7 +220,7 @@ Response Code | Notes
 403 | Request failed authentication validation.
 404 | Resource could not be found for the request.
 409 | The request was structured correctly, but was rejected by the server as a result of business rule validation.
-405<br>406<br>415 | Invalid method, accept header, or content media type.  Spring boot framework handles all these out of box and no custom logic should be needed to support these.
+405<br>406<br>415 | Invalid method, accept, or content media type.  Spring boot framework handles all these out of box and no custom logic should be needed to support these.
 429 | Status returned for throttling or rate limiting errors detected by a gateway proxy application.
 
 **Error Response**
@@ -262,7 +247,7 @@ Determine the custom headers to define for requests and responses.
 
 **Request Headers**
 
-> In general, the implementation of custom request headers should be rare with the exception of versioning.
+> In general, the implementation of custom request headers should be rare with the exception of things such as versioning.
 
 **Response Headers**
 
@@ -388,18 +373,6 @@ GET /schemas/customers
 
 > Applying the above JSON Schema example into a [JSON Editor](http://jeremydorn.com/json-editor/) will show how a web application could leverage this content.
 
-## Caching
-
-TODO - Research private Caching Strategies
-
-``` text
-GET /customers/123
-
-Cache-Control: s-max-age=300;stale-while-revalidate=600
-Vary: x-version
-Age: 24
-```
-
 ## Productionalization
 
 This section will provide details on what is typically needed in order to ensure an API is production ready.
@@ -471,3 +444,7 @@ CUSTOMER | 5 | POST | 500 | MISS | 50 | 100
 ### API Documentation
 
 Generally defined using swagger or RAML.  "Try it out" features should be sent to a mock service rather than the actual service.  The API docs from each of the applications across the project ideally would be pulled together to be provided by a single dev portal.
+
+---
+
+The [sample spring boot application](https://github.com/kkester/sample-spring-app.git) contains coding examples showing how some of these design aspects (such as error handling, JSON Schema, and versioning) can be implemented.
