@@ -373,6 +373,7 @@ GET /schemas/customers
 
 > Applying the above JSON Schema example into a [JSON Editor](http://jeremydorn.com/json-editor/) will show how a web application could leverage this content.
 
+
 ## Productionalization
 
 This section will provide details on what is typically needed in order to ensure an API is production ready.
@@ -421,7 +422,7 @@ Example JSON log record that would pipe into logstash.
 
 ### Monitoring & Alerting
 
-The following is a list of features that a Monitoring and Alerting solution would provide.
+The following is a list of possible features that a Monitoring and Alerting solution would provide.
 
 - Spikes in 4XX errors
 - 5XX error count exceed tolerable thresholds
@@ -447,4 +448,4 @@ Generally defined using swagger or RAML.  "Try it out" features should be sent t
 
 ---
 
-The [sample spring boot application](https://github.com/kkester/sample-spring-app.git) contains coding examples showing how some of these design aspects (such as error handling, JSON Schema, and versioning) can be implemented.
+The [sample spring boot application](https://github.com/pivotalservices/sample-rest-api-application.git) contains coding examples showing how some of these design aspects (such as error handling, JSON Schema, and versioning) can be implemented.
