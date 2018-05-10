@@ -208,6 +208,7 @@ Response Code | Notes
 200 | Server accepted the request or at least some portion of the request.<br>200 status is normally used for successful
 201 | Resource created.  Location response header required to be returned.<br>If the state of the resource remains the same as what was provided in the request, then it is generally acceptable to return a 201 with no response content.  Otherwise, the 201 response should have the resource content returned;
 204 | Successful response when no response content needs to be returned.  Most commonly would be returned for `DELETE` requests.  Would also be valid for `PUT` or `POST`, but is normally preferable for those requests to provide the resource as part of the response.
+304 | Successful response for a GET request indicating resource has not been modified since previous GET.  _See Conditional GETs for more details._
 
 > Requests that were _partially_ accepted by the service would return a 200 or 201 status along with errors indicating which portions of the request were rejected.
 
@@ -373,6 +374,46 @@ GET /schemas/customers
 
 > Applying the above JSON Schema example into a [JSON Editor](http://jeremydorn.com/json-editor/) will show how a web application could leverage this content.
 
+## Caching
+
+Headers worth consideration
+
+1. Cache-Control
+1. Vary
+1. Last-Modified & If-Modified-Since
+
+Cache-Control directives worth consideration
+
+1. s-max-age/max-age
+1. stale-while-revalidate (return stale entry and asynchronously refresh the resource)
+1. stale-if-error (return stale entry if request failed)
+
+**Basic Cache Example**
+``` text
+GET /customers/123
+
+Cache-Control: s-max-age=300;stale-while-revalidate=600;stale-if-error=900
+Vary: x-version
+Age: 24
+```
+
+**Conditional GET Example**
+``` text
+GET /customers
+
+200 OK
+Last-Modified: Mon, 7 May 2018 20:24:24 GMT
+Date: Mon, 7 May 2018 20:24:24 GMT
+```
+
+``` text
+GET /customers
+If-Modified-Since: Mon, 7 May 2018 20:24:24 GMT
+
+304 Not Modified
+Last-Modified: Mon, 7 May 2018 20:24:24 GMT
+Date: Tues, 8 May 2018 20:24:24 GMT
+```
 
 ## Productionalization
 
@@ -387,7 +428,11 @@ Monitoring, alerting, and reporting can be built upon the logging solution.  Usi
 
 ### Logging
 
-Example JSON log record that would pipe into logstash.
+The goal around logging would be to capture and persist the minimal amount of information about each request invoked for the API in order to support Monitoring, Alerting, and Reporting solutions.
+
+Consideration could be given to having a spring cloud gateway or some zuul based proxy to be put in place that could then provide a single logging solution for all APIs across the project.
+
+The below example JSON log record shows the type of data points that would be captured by a gateway proxy and piped into logstash if tools such as elastic search and Grafana were to be used for Reporting and Monitoring.
 ``` json
 {
 	"@timestamp": "2017-05-24T12:03:27.926Z",
