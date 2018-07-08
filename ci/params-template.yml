@@ -1,13 +1,11 @@
-site_user: pivotal
-site_password: bekind
-cf_api: api.run.pivotal.io
-cf_org: EVP
-cf_space: pse-production
+site_user:
+site_password:
+cf_api:
+cf_org:
+cf_space:
 cf-username: 
 cf-password: 
-git_repo_uri: git@github.com:pivotalservices/modernization-cookbook-template.git
+git_repo_uri:
 github_api_token: 
-git_branch: master
+git_branch:
 github_token: |
-      -----BEGIN RSA PRIVATE KEY-----
-      -----END RSA PRIVATE KEY-----
