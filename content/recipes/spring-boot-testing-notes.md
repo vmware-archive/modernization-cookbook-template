@@ -8,7 +8,6 @@ title = "Spring Boot Testing Notes"
 taxonomy = ["TEST-DRIVEN-DEVELOPMENT"]
 review_status = ["MERGED"]
 +++
-# General recommendations to keep in mind while writing spring boot tests.
 
 ## F.I.R.S.T Principles apply.
 1. F - Fast
@@ -23,7 +22,7 @@ Often times, it is sufficient to use jUnit without loading any additional framew
 
 > In the very naive code snipped below, there is no database interactions, and MapRepository loads data from the classpath.
 
-```
+```java
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -42,7 +41,7 @@ public class MapRepositoryTest {
 
 > As a next step up in complexity, consider adding mock frameworks, like mockito if you have some interactions with external resources.
 
-```
+```java
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,11 +75,11 @@ public class CarServiceTest {
 }
 ```
 
-## Only load `slices` of functionality when [testing spring boot applications](https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4).
+## Only load slices of functionality when [testing spring boot applications](https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4).
 
 > **@SpringBootTest** annotation loads whole application, but it is better to limit Application Context only to a set of spring components that participate in test scenario, by listing them in annotation declaration.
 
-```
+```java
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +107,7 @@ public class CarServiceWithRepoTest {
 
 > **@DataJpaTest** only loads @Repository spring components, and will greatly improve performance by not loading @Service, @Controller, etc.
 
-```
+```java
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class MapTests {
@@ -128,11 +127,11 @@ public class MapTests {
 
 ## Running Database related tests gotchas.
 
-Sometimes, `Table Already Exist` exception is thrown when testing with H2 database.  This is an indication that H2 is not cleared between test invocations (because Application Context is Cached?).  This behaviour was observed when combining db tests with initialization of Wiremock.  Also could occur if multiple qualifying schema-.sql files are located in the classpath.
+Sometimes, Table Already Exist exception is thrown when testing with H2 database.  This is an indication that H2 is not cleared between test invocations (because Application Context is Cached?).  This behaviour was observed when combining db tests with initialization of Wiremock.  Also could occur if multiple qualifying schema-.sql files are located in the classpath.
 
 It is a good practice to mock the beans that are involved in db interactions, and turn off spring boot test db initialization for the spring profile that tests runs.  Please strongly consider this when testing Controllers.  Alternatively, you can try to declare your table creation DDL in schema.sql files as `CREATE TABLE IF NOT EXISTS`.
 
-```
+```properties
 spring.datasource.initialize=false
 
 spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,\
@@ -147,7 +146,7 @@ spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.orm.jpa.Hibe
 >Use **@WebMvcTest** to test rest APIs exposed through Controllers.  Only list controllers that are being tested.
 _Note: It looks like spring beans used by controller need to be mocked._
 
-```
+```java
 @RunWith(SpringRunner.class)
 @WebMvcTest(CarServiceController.class)
 public class CarServiceControllerTests {
@@ -169,3 +168,6 @@ public class CarServiceControllerTests {
     }
 }
 ```
+
+## References
+- [The up to date documentation on Spring Boot testing](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html)

@@ -2,10 +2,9 @@ baseURL = "/"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
 title = "Template App Migration Recipes"
-copyright = "@2018, Pivotal Software, Inc. All Rights Reserved, Confidential"
+copyright = "@2019, Pivotal Software, Inc. All Rights Reserved, Confidential"
 theme = "hugo-theme-docdock"
 publishDir = "public"
-googleAnalytics = "GOOGLE_TRACKER_ID"
 pygmentsCodeFences = true
 pygmentsStyle = "friendly"
 
@@ -24,7 +23,6 @@ pygmentsStyle = "friendly"
 home = [ "HTML", "RSS", "JSON"]
 
 [[menu.shortcuts]]
-pre = "<h3>More</h3>"
-name = "<i class='fa fa-windows'></i>  DotNet Cookbook"
-identifier = "ds"
-url = "https://dotnet-cookbook.cfapps.io/intro/"
+pre = "<h5>&nbsp;</h5>"
+name = "<i class='fa fa-tag'></i>  See All Tags"
+url = "/tags"
