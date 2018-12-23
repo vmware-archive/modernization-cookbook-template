@@ -33,7 +33,7 @@ jobs:
   - get: hugo
     params:
       globs:
-      - '*Linux-64bit.tar.gz'
+      - 'hugo_[0-9]*Linux-64bit.tar.gz'
 
   - task: generate-auth
     file: documentation-repo/ci/tasks/htpasswd.yml
