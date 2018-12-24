@@ -1,5 +1,5 @@
 .logo {
-  color: black;
+  color: #00253E;
 }
 
 /*
@@ -7,48 +7,81 @@
  */
 
 #header {
-  background: #243641;
+  background: #00253E;
 }
 
 #header-wrapper {
-  background: #243641;       /*#ecefef;*/
-  border-bottom-color: #8d8e8e;
+  background: #00253E;       /*#ecefef;*/
+  border-bottom-color: #00253E;
 
 }
 
 /* background of menu */
 #sidebar {
-  background-color: #243641;
+  background-color: #00253E;
 }
 
 /* background of menu (when clicked) */
 #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
-  background-color: #243641;
+  background-color: #00253E;
 }
 
-#body a {
-  text-decoration: underline;
+#sidebar ul li.active > div > a {
+  background: transparent;
+  color: #00b5a3 !important;
+  padding-left: 1rem;
+  padding-right: 0rem;
 }
+
 
 a {
-  color: #0B4D48;
+  color: #00b5a3;
+}
+
+a:hover {
+  color: #0066ab;
+}
+
+.fa fa-search {
+  color: #00b5a3;
 }
 
 /* color of visited checkmarks */
 #sidebar ul li.visited > a .read-icon {
-  color: #ecefef;
+  color: #00b5a3;
 }
 
 .searchbox {
-    background: #686868;
-    border-color: #8d8e8e;
+    background: #fff;
+    border-color: #00253E;
+    margin-top: 0rem;
+}
+
+.searchbox input {
+    display: inline-block;
+    color: #00253E;
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border: 0;
+    padding: 0 25px 0 30px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.fa-search {
+  color: #00b5a3;
+}
+
+.fa-close {
+  color: #00b5a3;
 }
 
 .headline {
-    border-top: 1px dashed #183f81;
+    border-top: 1px dashed #00253E;
     font-size:smaller;
     font-weight: bold;
-    color: #0B4D48;
+    color: #00b5a3;
 }
 
 body strong {
