@@ -1,6 +1,6 @@
 +++
 categories = ["recipes"]
-tags = ["[foo]"]
+tags = ["foo"]
 summary = "Recipe Summary"
 title = "{{ replace .TranslationBaseName "-" " " | title }}"
 date = {{ .Date }}
