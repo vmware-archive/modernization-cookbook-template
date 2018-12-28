@@ -48,49 +48,21 @@ Hosted on PWS: https://modernization-template.cfapps.io/
 
 - Install `hugo`
   - With homebrew (Mac): `brew update && brew install hugo`
-  - Manual download: https://github.com/gohugoio/hugo/releases
-- Clone this repo with the `--recursive` flag to include the theme, which is a submodule. For convenience, add the name of cookbook now to match the name of the GitHub repository in `pivotalservices` :
-```
-git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive <enter customer name with -cookbook suffix>
-```
-- Alternatively, fetch the theme manually: `git submodule update --init --recursive`
+  - Manual download and install: https://github.com/gohugoio/hugo/releases
 
 ### Initial Setup of New Customer Cookbook
 The following steps will walk you through the process of creating a new GitHub repository with the modernization template and wipe out all the commit history associated to the modernization template so you can start fresh in your new cookbook repository.
 
-1. Create a new private GitHub repository in `pivotalservices` with the name of the customer with cookbook suffix ex. `mastercard-cookbook`
+1. Create a new private GitHub repository in `pivotalservices` with the name of the customer with cookbook suffix ex. `customer-cookbook`
 
-1. Clone this repo with the `--recursive` flag to include the theme, which is a submodule. For convenience, add the name of cookbook now to match the name of the GitHub repository you created in step 1:
-`git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive <enter customer name with -cookbook suffix>`
+1. Download the `new-cookbook` script from [here](https://github.com/pivotalservices/modernization-cookbook-template/releases/download/new-cookbook/new-cookbook)
 
-1. Remove the remote origin:
-`git remote remove origin`
-
-1. Add the new remote origin:
-`git remote add origin https://github.com/user/repo.git`
-
-1. Create a new unparented branch:
-`git checkout --orphan cookbook`
-
-1. Add all tracked and untracked files:
-`git add -A`
-
-1. Commit the files:
-`git commit -m "Initial Commit"`
-
-1. Delete master branch:
-`git branch -D master`
-
-1. Move/rename `cookbook` branch to master:
-`git branch -m master`
-
-1. Push the code and set the upstream flag for git/pull status:
-`git push -f --set-upstream origin master`
-
-1. Aggressively prune unreferenced objects:
-`git gc --aggressive --prune=all`
+1. Run the script providing name of the customer cookbook and path to the cookbook repository 
+`new-cookbook customer-cookbook https://github.com/pivotalservices/customer-cookbook.git`
 
 1. Update the README and clean up existing content as needed
+
+1. Add the new cookbook repository to `app[0]` team on the Github so that it is picked up by the cookbook aggregation tool
 
 ### Run locally (default: `localhost:1313`)
 ```
@@ -103,34 +75,9 @@ The following steps will walk you through the process of creating a new GitHub r
 cf push
 ```
 
-### Add New Inception document
-```
-hugo new inception/(title).md
-```
-
-### Add New Application
-```
-hugo new applications/(title).md
-```
-### Add New Blocker
-```
-hugo new blockers/(title).md
-```
-
-Add `resolved=true` to metadata header to mark a blocker resolved.
-
 ### Add New Recipe
 ```
 hugo new recipes/(title).md
-```
-### Add New Document
-```
-hugo new documents/(title).md
-```
-
-### Add New Lightweight Architecture Decision Record
-```
-hugo new decisions/(title).md
 ```
 
 ## Updating the theme
@@ -138,7 +85,7 @@ hugo new decisions/(title).md
 This site uses the `hugo-theme-docdock` theme, which is stored as a git submodule
 under the `themes` directory.
 
-To pull the latest version of the theme, simply update your submodules: `git submodule update --init --recursive`.
+To pull the latest version of the theme, update your submodules: `git submodule update --remote` and commit the change to customer cookbook repo.
 
 ## Disable Home Page Icon
 To disable the homepage and remove icon from sidebar, set the `noHomeIcon` param in `/config.toml`:
