@@ -1,0 +1,21 @@
+#!/bin/bash
+
+COOKBOOK_NAME=$1
+COOKBOOK_REPO=$2
+
+echo "Cloning template cookbook into directory ${COOKBOOK_NAME}"
+git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive $COOKBOOK_NAME
+
+pushd $COOKBOOK_NAME
+	git remote remove origin
+    git remote add origin $COOKBOOK_REPO
+    git checkout --orphan cookbook
+    git add -A
+    git commit -m "Init the cookbook"
+    git branch -D master
+    git branch -m master
+    git push -f --set-upstream origin master
+    git gc --aggressive --prune=all
+popd
+
+echo "The cookbook $COOKBOOK_NAME was created and pushed to remote repo $COOKBOOK_REPO"
