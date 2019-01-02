@@ -14,12 +14,13 @@ localforage.config({
  */
 function search(term) {
     // By default, the query will search for an exact match across title, tags, and content fields
-    var query = term;
     // Find the item in our index corresponding to the lunr one to have more info
-    return lunrIndex.search(query).map(function (result) {
-        return pagesIndex.filter(function (page) {
-            return page.uri === result.ref;
-        })[0];
+    return lunrIndex.search(term)
+        .slice(0,50)
+        .map(function (result) {
+            return pagesIndex.filter(function (page) {
+                return page.uri === result.ref;
+            })[0];
     });
 }
 
