@@ -36,7 +36,6 @@ document.appendChild = function (child) {
     return child;
 };
 
-// importScripts("/js/lz-string.min.js");
 importScripts("/js/lunr.min.js");
 importScripts("/js/jquery-2.x.min.js");
 importScripts("/js/localforage.nopromises.min.js");
@@ -79,15 +78,19 @@ function calculateIndexes(callback) {
         .done(function (index) {
             pagesIndex = index;
             lunrIndex = lunr(function () {
-                this.ref('uri');
-                this.field('title');
-                this.field('tags');
-                this.field('content');
+                this.ref("uri");
+                this.field('title', {
+                    boost: 15
+                });
+                this.field('tags', {
+                    boost: 10
+                });
+                this.field("content"); 
 
                 var idx = this;
                 pagesIndex.forEach(function (page) {
-                    idx.add(page)
-                })
+                    idx.add(page);
+                });
             });
 
             localforage.setItem('index', JSON.stringify(lunrIndex), function (err) {

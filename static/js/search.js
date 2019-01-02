@@ -13,7 +13,8 @@ localforage.config({
  * @return {Array}  results
  */
 function search(term) {
-    var query = "title:" + term + "*^15 tags:" + term + "*^10 content:" + term + "*";
+    // By default, the query will search for an exact match across title, tags, and content fields
+    var query = term;
     // Find the item in our index corresponding to the lunr one to have more info
     return lunrIndex.search(query).map(function (result) {
         return pagesIndex.filter(function (page) {
@@ -66,6 +67,8 @@ function setupSearchHandler() {
     if (lunrIndex && pagesIndex) {
         $(document).ready(function () {
             var searchList = new autoComplete({
+                /* default delay after onKeyUp before autoComplete is triggered */    
+                delay: 300,
                 /* selector for the search box element */
                 selector: $("#search-by").get(0),
                 /* source is the callback to perform the search */
@@ -74,11 +77,6 @@ function setupSearchHandler() {
                 },
                 /* renderItem displays individual search results */
                 renderItem: function (item, term) {
-                    var numContextWords = 2;
-                    var text = item.content.match(
-                        "(?:\\s?(?:[\\w]+)\\s?){0," + numContextWords + "}" +
-                        term + "(?:\\s?(?:[\\w]+)\\s?){0," + numContextWords + "}");
-                    item.context = text;
                     return '<div class="autocomplete-suggestion" ' +
                         'data-term="' + term + '" ' +
                         'data-title="' + item.title + '" ' +
