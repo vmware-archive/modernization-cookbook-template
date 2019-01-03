@@ -4,7 +4,7 @@ tar -xf hugo/*.tar.gz -C hugo
 HUGO=$(find hugo -type f -name hugo)
 $HUGO version
 
-cd documentation-repo
+cd cookbook-template-repo
 ../$HUGO -Ds ''
 
 mv public ../compiled-site

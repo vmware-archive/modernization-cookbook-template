@@ -6,13 +6,13 @@ resources:
     user: gohugoio
     repository: hugo
     access_token: {{github_api_token}}
-- name: documentation-repo
+- name: cookbook-template-repo
   type: git
   source:
     uri: {{git_repo_uri}}
     branch: {{git_branch}}
-    private_key: {{github_token}}
-- name: pws
+    private_key: {{github_private_key}}
+- name: pws-apptx
   type: cf
   source:
       api: {{cf_api}}
@@ -25,7 +25,7 @@ resources:
 jobs:
 - name: compile-site
   plan:
-  - get: documentation-repo
+  - get: cookbook-template-repo
     params:
       submodules: all
     trigger: true
@@ -36,15 +36,15 @@ jobs:
       - 'hugo_[0-9]*Linux-64bit.tar.gz'
 
   - task: generate-auth
-    file: documentation-repo/ci/tasks/htpasswd.yml
+    file: cookbook-template-repo/ci/tasks/htpasswd.yml
     params:
       SITE_USER: {{site_user}}
       SITE_PASSWORD: {{site_password}}
   
   - task: compile-site
-    file: documentation-repo/ci/tasks/hugo.yml
+    file: cookbook-template-repo/ci/tasks/hugo.yml
 
-  - put: pws
+  - put: pws-apptx
     params:
        manifest: compiled-site/manifest.yml
        path: compiled-site

@@ -6,7 +6,7 @@ image_resource:
   source: {repository: cloudfoundry/cflinuxfs2}
   
 inputs:
-  - name: documentation-repo
+  - name: cookbook-template-repo
   - name: hugo
   - name: password-site
 
@@ -14,4 +14,4 @@ outputs:
   - name: compiled-site
 
 run:
-  path: documentation-repo/ci/tasks/hugo.sh
+  path: cookbook-template-repo/ci/tasks/hugo.sh
