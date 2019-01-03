@@ -2,6 +2,7 @@
 applications:
 - name: app-transformation-cookbook-template
   memory: 64M
-  buildpack: staticfile_buildpack
+  buildpacks: 
+    - staticfile_buildpack
   env:
     FORCE_HTTPS: true

@@ -46,5 +46,6 @@ jobs:
 
   - put: pws-apptx
     params:
-       manifest: compiled-site/manifest.yml
-       path: compiled-site
+      manifest: compiled-site/manifest.yml
+      path: compiled-site
+      current_app_name: app-transformation-cookbook-template
