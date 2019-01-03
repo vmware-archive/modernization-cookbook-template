@@ -68,8 +68,6 @@ function setupSearchHandler() {
     if (lunrIndex && pagesIndex) {
         $(document).ready(function () {
             var searchList = new autoComplete({
-                /* default delay after onKeyUp before autoComplete is triggered */    
-                delay: 300,
                 /* selector for the search box element */
                 selector: $("#search-by").get(0),
                 /* source is the callback to perform the search */
@@ -90,7 +88,6 @@ function setupSearchHandler() {
                 },
                 /* onSelect callback fires when a search suggestion is chosen */
                 onSelect: function (e, term, item) {
-                    console.log(item.getAttribute('data-val'));
                     location.href = item.getAttribute('data-uri');
                 }
             });
