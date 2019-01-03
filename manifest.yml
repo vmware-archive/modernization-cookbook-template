@@ -1,6 +1,6 @@
 ---
 applications:
-- name: modernization-template
+- name: app-transformation-cookbook-template
   memory: 64M
   buildpack: staticfile_buildpack
   env:
