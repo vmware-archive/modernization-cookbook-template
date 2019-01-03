@@ -68,7 +68,6 @@ function setupSearchHandler() {
     if (lunrIndex && pagesIndex) {
         $(document).ready(function () {
             var searchList = new autoComplete({
-                delay: 300,
                 /* selector for the search box element */
                 selector: $("#search-by").get(0),
                 /* source is the callback to perform the search */
