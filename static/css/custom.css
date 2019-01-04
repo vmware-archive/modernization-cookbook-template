@@ -2,6 +2,10 @@
   color: #00253E;
 }
 
+.autocomplete-scroller {
+  overflow-y:auto;
+}
+
 /*
  * Theme customization follows...
  */

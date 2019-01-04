@@ -68,6 +68,7 @@ function setupSearchHandler() {
     if (lunrIndex && pagesIndex) {
         $(document).ready(function () {
             var searchList = new autoComplete({
+                menuClass: 'autocomplete-scroller',
                 /* selector for the search box element */
                 selector: $("#search-by").get(0),
                 /* source is the callback to perform the search */
@@ -76,14 +77,19 @@ function setupSearchHandler() {
                 },
                 /* renderItem displays individual search results */
                 renderItem: function (item, term) {
-                    return '<div class="autocomplete-suggestion" ' +
+                    var tags = item.tags.length > 0 ? '<strong>tags:</strong> ' + item.tags : '';
+                    var type = item.uri.includes('tags') ? '<strong>type:</strong> tag' : '<strong>type:</strong> recipe';
+                    return '<div class="autocomplete-suggestion"' +
                         'data-term="' + term + '" ' +
                         'data-title="' + item.title + '" ' +
                         'data-uri="' + item.uri + '" ' +
                         'data-context="' + item.context + '">' +
-                        '» ' + item.title +
-                        '<div class="context">' +
-                        (item.context || '') + '</div>' +
+                        '» ' + item.title + '' + 
+                        '<div class="context">' + 
+                            type + 
+                            '<br >' +
+                            tags + 
+                        '</div>' +
                         '</div>';
                 },
                 /* onSelect callback fires when a search suggestion is chosen */
