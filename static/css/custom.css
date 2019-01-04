@@ -3,6 +3,7 @@
 }
 
 .autocomplete-scroller {
+  width: 450px !important;
   overflow-y:auto;
 }
 
