@@ -3,7 +3,8 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source: {repository: cloudfoundry/cflinuxfs2}
+  source:
+    repository: node
   
 inputs:
   - name: cookbook-template-repo

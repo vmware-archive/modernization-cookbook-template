@@ -1,10 +1,5 @@
-var lunrIndex, pagesIndex, ww;
-
-// Specifying storage at which we keep search indexes
-localforage.config({
-    name: 'cookbook',
-    storeName: 'search_index_store'
-});
+/* Adaptation and override of base docdock search - https://github.com/vjeantet/hugo-theme-docdock/blob/master/static/js/search.js */
+var lunrIndex, pagesIndex;
 
 /**
  * Trigger a search in lunr and transform the result
@@ -24,44 +19,39 @@ function search(term) {
     });
 }
 
-// Cleaning up the search index storage if client has started new session
+// Initializing index
 (function () {
-    var sessionExists = sessionStorage.getItem("cookbook.index.exists");
-    if (!sessionExists) {
-        localforage.clear(function (err) {
-            initializeSearch();
-        });
-    } else {
-        initializeSearch();
-    }
+    initializeSerializedIndex();
 })();
 
-function initializeSearch() {
-// Attempt to load the indexes from storage
-    if (typeof(ww) === "undefined") {
-        ww = new Worker("/js/load-lunr-index.js");
-        ww.onmessage = function (ev) {
-            localforage.getItem('index', function (err, value) {
-                if (err)
-                    return;
-
-                lunrIndex = lunr.Index.load(JSON.parse(value));
-                localforage.getItem('pages', function (err, value) {
-                    if (err)
-                        return;
-
-                    pagesIndex = JSON.parse(value);
-
-                    if (lunrIndex && pagesIndex)
-                        setupSearchHandler();
-                });
-            });
-
-            sessionStorage.setItem("cookbook.index.exists", "true");
-            ww.terminate();
-            ww = undefined;
-        }
+function initializeSerializedIndex(){
+    if (!endsWith(baseurl,"/")){
+        baseurl = baseurl+'/';
     }
+
+    var indexPromise = $.getJSON(baseurl + "index.json")
+        .done(function (index) {
+            pagesIndex = index;
+        })
+        .fail(function (jqxhr, textStatus, error) {
+            var err = textStatus + ", " + error;
+            console.error("Error getting Hugo index file:", err);
+        });
+
+    var lunrSerializedPromise = $.getJSON(baseurl + "lunrSerializedIndex.json")
+        .done(function (lunrSerializedIndex) {
+            lunrIndex = lunr.Index.load(lunrSerializedIndex);
+        })
+        .fail(function (jqxhr, textStatus, error) {
+            var err = textStatus + ", " + error;
+            console.error("Error getting Hugo index file:", err);
+        });
+
+    $.when(lunrSerializedPromise, indexPromise).done(function () {
+        if (lunrIndex && pagesIndex)
+            setupSearchHandler();
+    });
+    
 }
 
 function setupSearchHandler() {
@@ -99,4 +89,8 @@ function setupSearchHandler() {
             });
         });
     }
+}
+
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
