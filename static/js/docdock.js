@@ -1,4 +1,4 @@
-/* Adaptation and override of base docdock scrip to remove text highlighting - https://github.com/vjeantet/hugo-theme-docdock/blob/master/static/js/docdock.js */
+/* Adaptation and override of base docdock script to remove text highlighting - https://github.com/vjeantet/hugo-theme-docdock/blob/master/static/js/docdock.js */
 
 // Get Parameters from some url
 var getUrlParameter = function getUrlParameter(sPageURL) {

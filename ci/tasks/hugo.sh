@@ -6,7 +6,7 @@ $HUGO version
 
 cd cookbook-template-repo
 ../$HUGO -Ds ''
-mv buildIndex.js public/
+cp buildIndex.js public/
 cd public 
 cat index.json | node buildIndex.js  > lunrSerializedIndex.json
 cd -
