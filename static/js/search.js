@@ -21,7 +21,7 @@ function search(term) {
             return pagesIndex.filter(function (page) {
                 return page.uri === result.ref;
             })[0];
-    });
+        });
 }
 
 // Cleaning up the search index storage if client has started new session
@@ -37,7 +37,7 @@ function search(term) {
 })();
 
 function initializeSearch() {
-// Attempt to load the indexes from storage
+    // Attempt to load the indexes from storage
     if (typeof(ww) === "undefined") {
         ww = new Worker("/js/load-lunr-index.js");
         ww.onmessage = function (ev) {
@@ -45,7 +45,11 @@ function initializeSearch() {
                 if (err)
                     return;
 
+                var start = new Date().getTime();    
                 lunrIndex = lunr.Index.load(JSON.parse(value));
+                var end = new Date().getTime();
+                var time = end - start;
+                console.log('Lunr Index LOAD Execution time: ' + time + 'ms');
                 localforage.getItem('pages', function (err, value) {
                     if (err)
                         return;
@@ -53,7 +57,12 @@ function initializeSearch() {
                     pagesIndex = JSON.parse(value);
 
                     if (lunrIndex && pagesIndex)
+                        var start = new Date().getTime(); 
                         setupSearchHandler();
+                        var end = new Date().getTime();
+                        var time = end - start;
+                        console.log('Search Handler Execution time: ' + time + 'ms');
+                        console.log('Index and Search Setup Complete');
                 });
             });
 
@@ -68,6 +77,9 @@ function setupSearchHandler() {
     if (lunrIndex && pagesIndex) {
         $(document).ready(function () {
             var searchList = new autoComplete({
+                delay: 200,
+                /* Turn off autocomplete caching */
+                cache: 0,
                 menuClass: 'autocomplete-scroller',
                 /* selector for the search box element */
                 selector: $("#search-by").get(0),

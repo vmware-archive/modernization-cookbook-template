@@ -22,13 +22,12 @@ stdin.on('end', function () {
     this.field('tags', {
       boost: 10
     });
-    this.field("content");
+    this.field('content');
 
     documents.forEach(function (doc) {
       this.add(doc);
     }, this);
-
-    this.pipeline.remove(this.stemmer);
+    
   });
 
   stdout.write(JSON.stringify(idx));
