@@ -46,7 +46,7 @@ gulp.task('preBuildIndex', function() {
 });
 
 gulp.task('build', gulp.series('hugo-build',
-    gulp.parallel('minify-html', 'minify-css', 'minify-images', 'minify-js', 'preBuildIndex'), function asyncComplete (done) {
+    gulp.parallel('minify-css', 'minify-images', 'minify-js', 'preBuildIndex'), function asyncComplete (done) {
         done();
     }
 ));
