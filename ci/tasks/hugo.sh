@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 set -eux
 tar -xf hugo/*.tar.gz -C hugo
+
 HUGO=$(find hugo -type f -name hugo)
-$HUGO version
+export PATH=$PWD/hugo:$PATH
+
+hugo version
 
 cd cookbook-template-repo
-../$HUGO -Ds ''
-cp buildIndex.js public/
-cd public 
-cat index.json | node buildIndex.js  > lunrSerializedIndex.json
-cd -
+npm install
+npm run build
 
 mv public ../compiled-site
 mv Staticfile ../compiled-site/

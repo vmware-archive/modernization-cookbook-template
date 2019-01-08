@@ -1,3 +1,5 @@
+'use strict';
+
 /* Adaptation of https://lunrjs.com/guides/index_prebuilding.html */
 var lunr = require('./js/lunr.min.js'),
   stdin = process.stdin,
@@ -16,13 +18,13 @@ stdin.on('end', function () {
 
   var idx = lunr(function () {
     this.ref("uri");
-    this.field('title', {
+    this.field("title", {
       boost: 15
     });
-    this.field('tags', {
+    this.field("tags", {
       boost: 10
     });
-    this.field('content');
+    this.field("content");
 
     documents.forEach(function (doc) {
       this.add(doc);
