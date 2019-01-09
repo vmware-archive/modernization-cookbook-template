@@ -1,5 +1,3 @@
-[wings.concourse-ci.org](https://wings.concourse-ci.org/teams/PCFS/pipelines/modernization-template)
-
 # Template App Migration Dojo Cookbook Site
 
 This is a [Hugo](https://github.com/gohugoio/hugo) site. It is driven by markdown files that can be generated using the commands provided in this document.
