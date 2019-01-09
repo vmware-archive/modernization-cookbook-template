@@ -4,8 +4,6 @@
 
 This is a [Hugo](https://github.com/gohugoio/hugo) site. It is driven by markdown files that can be generated using the commands provided in this document.
 
-Hosted on PWS: https://modernization-template.cfapps.io/
-
 # What makes a good recipe cookbook
 0. **Make it customer agnostic.** No customer or customer project names in the recipes. Do not name recipe files with customer or customer project names.
 2. Start from this repository
