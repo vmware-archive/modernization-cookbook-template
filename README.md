@@ -58,7 +58,15 @@ The following steps will walk you through the process of creating a new GitHub r
 
 1. Update the README and clean up existing content as needed
 
+1. Validate that you can build and run the cookbook locally via `./localserver`
+
 1. Add the new cookbook repository to `app[0]` team on the Github so that it is picked up by the cookbook aggregation tool
+
+**NOTE:** If you do not use the setup script or you run into errors building and running locally, ensure that you have the `submodule` for the hugo template.  
+
+*Example from setup script with `--recursive` flag:* `git clone https://github.com/pivotalservices/modernization-cookbook-template.git --recursive $COOKBOOK_NAME`
+
+*To manually add the submodule, execute:* `git submodule update --init --recursive`
 
 ### Run locally (default: `localhost:1313`)
 ```
