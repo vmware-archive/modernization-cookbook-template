@@ -5,10 +5,15 @@ var htmlmin = require('gulp-htmlmin');
 var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify-es').default;
 var imagemin = require('gulp-imagemin');
-var cp = require('child_process');
+var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 
-gulp.task('hugo-build', function() {
-    return cp.exec('npm run hugo-build');
+gulp.task('hugo-build', function (cb) {
+    exec('./publish', function (err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        cb(err);
+    });
 });
 
 gulp.task('minify-html', function () {
@@ -29,7 +34,7 @@ gulp.task('minify-css', function () {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('minify-js', function() {
+gulp.task('minify-js', function () {
     return gulp.src('public/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('./public'));
@@ -41,12 +46,16 @@ gulp.task('minify-images', function () {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('preBuildIndex', function() {
-    return cp.exec('npm run preBuildIndex');
+gulp.task('preBuildIndex', function (cb) {
+    var cmd = spawn('npm', ['run', 'preBuildIndex'], { stdio: 'inherit' });
+    cmd.on('close', function (code) {
+        console.log(`npm run preBuildIndex exited with code => ${code}`);
+        cb(code);
+    });
 });
 
 gulp.task('build', gulp.series('hugo-build',
-    gulp.parallel('minify-css', 'minify-images', 'minify-js', 'preBuildIndex'), function asyncComplete (done) {
+    gulp.parallel('minify-css', 'minify-images', 'minify-js', 'preBuildIndex'), function asyncComplete(done) {
         done();
     }
 ));
