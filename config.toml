@@ -1,17 +1,19 @@
 baseURL = "/"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "App Transformation Cookbook"
-copyright = "@2019, Pivotal Software, Inc. All Rights Reserved, Confidential"
+title = "Applicaiton Modernization Cookbook"
+copyright = "@2020, Pivotal VMware Software, Inc. All Rights Reserved, Confidential"
 theme = "hugo-theme-docdock"
 publishDir = "public"
 pygmentsCodeFences = true
 pygmentsStyle = "friendly"
+enableRobotsTXT = true
+enableGitInfo = true
 
 [params]
   themeStyle = "original"
   disableHomeIcon = true
-  description = "Migrating applications to Cloud Foundry."
+  description = "Migrating applications"
   noCategoryLink = true
   showVisitedLinks = false
   noSearch = false
