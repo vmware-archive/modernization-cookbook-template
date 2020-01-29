@@ -1,7 +1,7 @@
-{{ range first 10 .Site.RegularPages.ByDate.Reverse }}
-{{ if not .Date.IsZero }}
+{{.Inner}}
+
+{{- range first 10 .Site.Pages }}
 <li>
-{{ .Date.Format "01-02-2006" }} - <a href="{{ .Permalink }}">{{ .Title }}</a>
+{{ .Date.Format "02/01/2006" }} - <a href="{{ .Permalink }}">{{ .Title }}</a>
 </li>
-{{ end }}
 {{ end }}

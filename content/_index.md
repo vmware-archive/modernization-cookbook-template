@@ -4,7 +4,7 @@ title = "Home Page"
 description = "Default Home Page"
 +++
 
-# Application Transformation Cookbook
+## Application Modernization Cookbook
 
-### Most recent recipes
-{{% latest-pages  %}}
+### Recent recipes
+{{% recently-updated  %}}
