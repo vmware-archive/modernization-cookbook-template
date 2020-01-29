@@ -1,7 +1,7 @@
 baseURL = "/"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "Applicaiton Modernization Cookbook"
+title = "Application Modernization Cookbook"
 copyright = "@2020, Pivotal VMware Software, Inc. All Rights Reserved, Confidential"
 theme = "hugo-theme-docdock"
 publishDir = "public"
