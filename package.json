@@ -17,7 +17,8 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "5.0.3",
     "gulp-shell": "^0.5.2",
-    "gulp-uglify-es": "1.0.4"
+    "gulp-uglify-es": "1.0.4",
+    "lodash.template": ">=4.5.0"
   },
   "repository": {
     "type": "git",
