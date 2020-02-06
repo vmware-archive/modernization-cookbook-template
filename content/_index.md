@@ -7,4 +7,4 @@ description = "Default Home Page"
 ## Application Modernization Cookbook
 
 ### Recent recipes
-{{% recently-updated  %}}
+{{< recently-updated  >}}
