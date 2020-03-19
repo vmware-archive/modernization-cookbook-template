@@ -1,0 +1,7 @@
+{{ $thisSection := $.Page.Section }}
+{{.Inner}}
+<ul class="children children-li">
+{{ range (sort (where ( where .Site.Pages "Section" $thisSection ) ".Title" "!=" $thisSection) ".Name" "asc")}}
+    <span><li><a href="{{ .Permalink }}">{{ .Title }}</a></li></span>
+{{ end }}
+</ul>
