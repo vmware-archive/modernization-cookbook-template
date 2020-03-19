@@ -1,7 +1,7 @@
 {{ $thisSection := $.Page.Section }}
 {{.Inner}}
-{{- range first 10 .Site.Pages }}
-<li>
-{{ .Date.Format "02/01/2006" }} - <a href="{{ .Permalink }}">{{ .Title }}</a>
-</li>
+<ul class="children children-li">
+{{ range first 5 (sort (where ( where .Site.Pages "Section" $thisSection ) ".Title" "!=" $thisSection) ".Date" "desc")}}
+    <span><li>{{ .Date.Format "02/01/2006" }} - <a href="{{ .Permalink }}">{{ .Title }}</a></li></span>
 {{ end }}
+</ul>
