@@ -2,21 +2,22 @@
 categories = ["recipes"]
 tags = ["HikariCP","database connection pooling","performance tuning","noisy neighbor"]
 summary = ""
-title = "HikariCP Performance Tuning"
-date = 2018-12-28T09:58:55-05:00
+title = "HikariCP Performance Analysis and Tuning"
+date = "2020-03-19T010:00:00-05:00"
+taxonomy = ["TROUBLESHOOTING"]
+review_status = ["MERGED"]
 +++
 
 In this recipe, you will learn to analyze/tune performance of a spring boot app that uses `HikariCP` for database connection pooling.
 
 ### Tools
-* **Micrometer**: _expose_ the metrics from the spring boot application
-* **Prometheus**: _store_ and _time-series aggregation_ of metric data
-* **Grafana**: _visualize_ the aggregated metric data from Prometheus
-* **JMeter**: for load tests
-
+* **Micrometer** to _expose_ the metrics from the spring boot application
+* **Prometheus** to _store_ and _time-series aggregation_ of metric data
+* **Grafana** to _visualize_ the aggregated metric data from Prometheus
+* **JMeter** for _load tests_
+![analysis toolchain](/images/hikaricp-tool-chain.png)
 
 ### Setup
-
 - For **_non docker_** environments you can download `Prometheus`and `Grafana` binaries and, run them locally on the laptop. All other steps except those involving Docker shall apply.
 
 #### Configure Spring Boot 2.x app
@@ -114,7 +115,7 @@ In this recipe, you will learn to analyze/tune performance of a spring boot app 
    2. navigate to http://localhost:3000 and, log into Grafana with the default username `admin` and password `admin`
    3. click on `Add Data Source` and select `Prometheus`
    4. add HTTP URL you defined in `prometheus.yml`
-   5. import [Spring Boot 2.1 Statistics Grafana Dashboard](https://grafana.com/grafana/dashboards/10280) and assign to the data source.   
+   5. import [Spring Boot 2.1 Statistics Grafana Dashboard](https://grafana.com/grafana/dashboards/10280) and, assign it to the data source.   
 
 #### Setup JMeter
 
@@ -129,12 +130,17 @@ Refer to https://octoperf.com/blog/2018/04/23/jmeter-rest-api-testing/ for JMete
 
 3. View the Grafana `Spring Boot 2.1 Statistics` dashboard using http://localhost:3000 **during** the execution of the JMeter load test.
 
-4. View the **HikariCP Statistics** in **Grafana** dashboard.
-      ![HikariCP Statistics](/images/hikaricp-grafana.png)
+    ![HikariCP Statistics](/images/grafana-basic-stats.png)
+    ![HikariCP Statistics](/images/grafana-jvm-stats.png)
+    ![HikariCP Statistics](/images/grafana-jvm-gc-stats.png)
+    ![HikariCP Statistics](/images/grafana-tomcat-stats.png)
 
-  - **Connection Size** total connections in DB connection pool (`active + idle + pending`).
-  - **Connections** count of `active`+ `idle` + `pending` connections over a rolling time window.
-  - **Connection Usage Time** approximately equal to `db query execution time`.
+4. Analyze the **HikariCP Statistics** in **Grafana** dashboard.
+   ![HikariCP Statistics](/images/grafana-basic-hikari-stats.png)
+
+  - **Connection Size** is the total connections in DB connection pool (`active + idle + pending`).
+  - **Connections** is the count of `active`+ `idle` + `pending` connections over a rolling time window.
+  - **Connection Usage Time** is approximately equal to `db query execution time`.
   - **Connection Acquire Time**
   - **Connection Creation Time**
 
