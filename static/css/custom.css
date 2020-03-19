@@ -92,3 +92,12 @@ a:hover {
 body strong {
     font-family: "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
 }
+
+.footline {
+  margin-top: 3rem;
+  border-top: 4px solid #F0F2F4;
+  font-size: smaller; }
+
+body #body-inner {
+    margin-bottom: 1rem;
+}
