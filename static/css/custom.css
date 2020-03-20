@@ -119,3 +119,8 @@ body #body-inner {
   overflow-x: auto;
   background-color: #E0E0E0;
 }
+
+body #sidebar hr {
+  border-bottom: 0px solid #2053AB;
+}
+
