@@ -37,16 +37,22 @@
 </div>
 
 {{else }}
-
-{{ $paginator := .Paginator }}
-<div class="extra-pagination inner">
-{{ partial "pagination.html" $paginator }}
+<div>
+    <p>List of the <span class="badge">{{ len .Pages }}</span> recipe(s) tagged with <a href="#" class="btn btn-default" role="button" style="text-transform: uppercase; font-size: 12px; padding-right: 5px; padding-left: 5px;" >{{ .Title }}</a>&nbsp;:</p>
 </div>
-{{ range $index, $page := $paginator.Pages }}
-   {{ .Render "li" }}
-{{ end }}
-<div style="margin-bottom:2rem"></div>
-{{ partial "pagination.html" $paginator }}
+<ul class="children children-li">
+    {{ range .Pages.ByTitle }}
+    <span><li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a> ({{ .Date.Format "02/01/2006" }})</li>
+        {{- if .Description}}
+        <p>{{.Description}}</p>
+        {{- else}}
+        <p>{{- if .Summary}}{{.Summary}}{{- end}}</p>
+        {{- end}}
+        <br/>
+    </span>
+    {{ end }}
+</ul>
 
 {{end}}
 
