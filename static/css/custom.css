@@ -34,7 +34,7 @@
 #sidebar ul li.active > div > a {
   background: transparent;
   color: #00b5a3 !important;
-  padding-left: 1rem;
+  padding-left: 0rem;
   padding-right: 0rem;
 }
 
