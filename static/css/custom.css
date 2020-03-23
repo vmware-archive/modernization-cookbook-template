@@ -124,3 +124,14 @@ body #sidebar hr {
   border-bottom: 0px solid #2053AB;
 }
 
+.last-updated {
+  background-color: #f7f7f7;
+  vertical-align: middle;
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+	float: right;
+}
