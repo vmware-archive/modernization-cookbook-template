@@ -11,21 +11,22 @@ enableRobotsTXT = true
 enableGitInfo = true
 
 [params]
-  themeStyle = "original"
-  disableHomeIcon = true
-  description = "Migrating applications"
-  noCategoryLink = true
-  showVisitedLinks = false
-  noSearch = false
-  noHomeIcon = true
-  ordersectionsby = "weight"
-  ignoreFiles = [ "\\.adoc$" ]
-  disableNavChevron = true
+themeStyle = "original"
+disableHomeIcon = true
+description = "Application Modernization Cookbook"
+noCategoryLink = true
+showVisitedLinks = false
+noSearch = false
+noHomeIcon = true
+ordersectionsby = "title"
+ignoreFiles = [ "\\.adoc$" ]
+disableNavChevron = true
+menushortcutsnewtab = false
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
 [[menu.shortcuts]]
 pre = "<h5>&nbsp;</h5>"
-name = "<i class='fa fa-tag'></i>  See All Tags"
-url = "/tags"
+name = "<i class='fa fa-tag'></i>&nbsp;&nbsp;All Tags"
+url = "/tags/"

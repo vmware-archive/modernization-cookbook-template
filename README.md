@@ -32,11 +32,12 @@ This is a [Hugo](https://github.com/gohugoio/hugo) site. It is driven by markdow
 15. **AUTHn-AUTHz**  "Security related topics."
 16. **TROUBLESHOOTING** "Debugging and Troubleshooting of apps and modules during staging and running of apps"
 17. **DAY2-OPS** "Operating an app in production."
-18. **GENERAL** "General uncategorized recipes"
-19. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
-20. **PKS** "Recipes to do with PKS, Lift & Shift and AppTx".
-21. **CLIENT** "Internal Only - Client specific recipes"
-22. **PATTERN** Buckets of Recipes
+18. **IDE-HACKS** "IDE (IntelliJ, Eclipse) specific short cuts/ tricks"
+19. **PKS** "Recipes to do with PKS, Lift & Shift and AppTx".
+20. **CLIENT** "Internal Only - Client specific recipes"
+21. **PATTERN** Buckets of Recipes
+22. **GENERAL** "General uncategorized recipes"
+
 
 ## Getting Started
 

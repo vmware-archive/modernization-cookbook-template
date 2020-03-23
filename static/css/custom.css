@@ -21,12 +21,12 @@
 
 }
 
-/* background of menu */
+/* Background of menu */
 #sidebar {
   background-color: #00253E;
 }
 
-/* background of menu (when clicked) */
+/* Background of menu (when clicked) */
 #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
   background-color: #00253E;
 }
@@ -34,10 +34,9 @@
 #sidebar ul li.active > div > a {
   background: transparent;
   color: #00b5a3 !important;
-  padding-left: 1rem;
+  padding-left: 0rem;
   padding-right: 0rem;
 }
-
 
 a {
   color: #00b5a3;
@@ -91,4 +90,48 @@ a:hover {
 
 body strong {
     font-family: "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+}
+
+.footline {
+  margin-top: 3rem;
+  border-top: 4px solid #F0F2F4;
+  font-size: smaller; }
+
+body #body-inner {
+    margin-bottom: 1rem;
+}
+
+/* Note shortcodes */
+.note {
+  border-left-width: 4px;
+  border-left-style: solid;
+  position: relative;
+  border-color: #00b5a3;
+  display: block;
+}
+
+.admonition-content {
+  display: block;
+  margin: 0px;
+  padding: .125em 1em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  overflow-x: auto;
+  background-color: #E0E0E0;
+}
+
+body #sidebar hr {
+  border-bottom: 0px solid #2053AB;
+}
+
+.last-updated {
+  background-color: #f7f7f7;
+  vertical-align: middle;
+}
+
+.alignleft {
+  float: left;
+}
+.alignright {
+	float: right;
 }
