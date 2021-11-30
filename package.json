@@ -15,11 +15,12 @@
     "gulp-clean-css": "^3.0.4",
     "gulp-cli": "2.0.1",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-imagemin": "5.0.3",
+    "gulp-imagemin": "^5.0.3",
     "gulp-shell": "^0.5.2",
     "gulp-uglify-es": "1.0.4",
     "minimist": ">=1.2.3",
-    "lodash.template": ">=4.5.0"
+    "lodash.template": ">=4.5.0",
+    "is-svg": ">=4.2.2"
   },
   "repository": {
     "type": "git",
