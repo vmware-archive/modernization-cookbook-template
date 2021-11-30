@@ -19,7 +19,7 @@
     "gulp-shell": "^0.5.2",
     "gulp-uglify-es": "1.0.4",
     "is-svg": ">=4.2.2",
-    "lodash.template": ">=4.5.0",
+    "lodash.template": "^4.5.0",
     "minimist": ">=1.2.3"
   },
   "repository": {
