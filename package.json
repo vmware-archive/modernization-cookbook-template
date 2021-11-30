@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "babel-core": "6.26.3",
-    "gulp": "4.0.0",
+    "gulp": "4.0.2",
     "gulp-clean-css": "^3.0.4",
     "gulp-cli": "2.0.1",
     "gulp-htmlmin": "^5.0.1",
