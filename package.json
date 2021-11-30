@@ -22,7 +22,7 @@
     "is-svg": ">=4.2.2",
     "lodash.template": "^4.5.0",
     "minimist": ">=1.2.3",
-    "trim-newlines": ">=3.0.1"
+    "trim-newlines": ">=4.0.2"
   },
   "repository": {
     "type": "git",
