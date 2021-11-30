@@ -8,3 +8,4 @@ dev/
 .wercker/
 params.yml
 node_modules
+yarn.lock
