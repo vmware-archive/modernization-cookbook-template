@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+HUGO_BUILD_LOG="hugo-build.log"
+
+main() {
+  hugo_build
+  retry_hugo_build_if_failed
+  retry_hugo_build_if_failed
+
+  exit $hugo_exit
+}
+
+hugo_build() {
+  cleanup
+  trap cleanup EXIT
+
+  set +e
+  hugo -Ds '' --gc --minify | tee "${HUGO_BUILD_LOG}"
+  hugo_exit=${PIPESTATUS[0]}
+  set -e
+
+  check_concurrent_map_issue
+}
+
+cleanup() {
+  rm -f "${HUGO_BUILD_LOG}"
+}
+
+retry_hugo_build_if_failed() {
+  if [[ "$hugo_exit" != "0" ]] && [[ "$concurrent_map_issue" ]]
+  then
+    echo "Rerunning Hugo build after crash..."
+    hugo_build
+  fi
+}
+
+check_concurrent_map_issue() {
+  set +e
+  grep -q "fatal error: concurrent map read and map write" "${HUGO_BUILD_LOG}"
+  concurrent_map_issue=$?
+  set -e
+}
+
+main

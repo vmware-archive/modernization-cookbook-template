@@ -1,0 +1,79 @@
+{{- $currentPage := . }}
+{{- range .Site.Home.Sections.ByWeight}}
+    {{if .Title}}
+        {{- template "recursive-nav" dict "currentPage" $currentPage "node" . }}
+    {{end}}
+{{- end}}
+<div class="nav-divider"></div>
+<div class="nav-group {{- if eq $currentPage.RelPermalink "/tags/"}} active{{- end}}">
+    <div class="nav-group-content">
+        <a class="nav-group-trigger" href="/tags/">
+            <div class="nav-icon">
+                <i class="fas fa-tags"></i>
+            </div>
+            <div class="nav-group-text">
+                Browse Tags
+            </div>
+        </a>
+    </div>
+</div>
+
+{{- define "recursive-nav" }}
+    {{- $currentPage := .currentPage }}
+    {{- $node := .node }}
+    {{- $children := ($node.Pages | union $node.Sections) }}
+    {{- $numberOfChildren := (len $children) }}
+
+    <div class="nav-group {{- if eq $currentPage.Permalink $node.Permalink}} active{{- end}} {{- if $node.IsAncestor $currentPage }} open{{- end }}">
+        <div class="nav-group-content">
+            <a class="nav-group-trigger" href="{{ $node.RelPermalink }}">
+                <div class="nav-icon">
+                    {{safeHTML $node.Params.Pre}}
+                </div>
+                <div class="nav-group-text">
+                    {{$node.LinkTitle}}
+                </div>
+                <div class="nav-group-trigger-icon">
+                    <span class="category-icon"></span>
+                </div>
+            </a>
+        </div>
+        {{- template "recursive-child-nav" dict "currentPage" $currentPage "node" $node }}
+    </div>
+{{- end }}
+
+{{- define "recursive-child-nav" }}
+    {{- $currentPage := .currentPage }}
+    {{- $node := .node }}
+    {{- $children := ($node.Pages | union $node.Sections) }}
+    {{- $numberOfChildren := (len $children) }}
+
+    {{- if and (ne $numberOfChildren 0) ($node.IsAncestor $currentPage) }}
+    <div class="nav-group-children">
+        {{- range $children.ByLinkTitle }}
+            {{- $grandchildren := (.Pages | union .Sections) }}
+            {{- if ne (len $grandchildren) 0 }}
+            <div class="nav-group {{- if eq $currentPage.Permalink .Permalink}} active{{- end}} {{- if .IsAncestor $currentPage }} open {{- end }}">
+                <div class="nav-group-content">
+                    <a class="nav-group-trigger" href="{{ .RelPermalink }}">
+                        <div class="nav-group-text">
+                            {{.LinkTitle}}
+                        </div>
+                        <div class="nav-group-trigger-icon">
+                            <span class="category-icon"></span>
+                        </div>
+                    </a>
+                </div>
+                {{- template "recursive-child-nav" dict "currentPage" $currentPage "node" . }}
+            </div>
+            {{- else }}
+            <a class="nav-link {{- if eq $currentPage.Permalink .Permalink}} active{{- end}}" href="{{ .RelPermalink }}">
+                <span class="nav-text">
+                    {{.LinkTitle}}
+                </span>
+            </a>
+            {{- end }}
+        {{- end}}
+    </div>
+    {{- end }}
+{{- end }}

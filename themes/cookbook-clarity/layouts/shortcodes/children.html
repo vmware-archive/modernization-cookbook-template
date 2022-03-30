@@ -1,0 +1,13 @@
+<ul class="children">
+	{{- range .Page.Sections.ByWeight }}
+	{{if .Title}}
+	<li>
+		<div class="child-category">
+		    <a href="{{.RelPermalink}}">{{.Title}}</a>
+			<p>{{.Description}}</p>
+		</div>
+
+	</li>
+	{{end}}
+	{{- end}}
+</ul>

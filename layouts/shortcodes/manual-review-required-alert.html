@@ -1,0 +1,7 @@
+<!-- Manual Review Required Alert -->
+{{ if eq .Page.Params.review_status "Review Required"}}
+    <div class="alert alert-danger" role="alert">Review Required</div>
+{{ else }}
+    <div class="alert alert-success" role="alert">Review Complete</div>
+{{ end }}
+<!-- Manual Review Required Alert -->

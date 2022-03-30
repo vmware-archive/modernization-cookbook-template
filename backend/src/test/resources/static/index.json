@@ -1,0 +1,40 @@
+[
+  {
+    "uri": "/cat/",
+    "title": "Cat",
+    "tags": [
+      "mammal",
+      "meow"
+    ],
+    "description": "",
+    "content": "Cat"
+  },
+  {
+    "uri": "/dog/",
+    "title": "Dog",
+    "tags": [
+      "woof",
+      "mammal"
+    ],
+    "description": "",
+    "content": "Problem\nYou are trying to feed a canine. The canine is hangry and expects a form of nutrition ASAP.\nSolution\nTravel to Kentucky on the fastest connection. Purchase a bucket of fried chicken and deliver it to the animal through the messaging solution of your choice.\nHow To Do It\n1. Book a flight\n2. Purchase fried chicken. There are several valid purchasing strategies, depending on stakeholder preferences optimizing for price or taste preferences could make sense.\n3. Send chicken over messaging solution\nReferences\n* Wikipedia: Canis\\u0026mdash;for more information about Caninae"
+  },
+  {
+    "uri": "/crocodile/",
+    "title": "Crocodile",
+    "tags": [
+      "roar",
+      "reptile",
+      "With spaces and casing"
+    ],
+    "description": "",
+    "content": "Crocodile"
+  },
+  {
+    "uri": "/tags/this-is-a-tag/",
+    "title": "Tag",
+    "tags": [],
+    "description": "It doesn't have content and should not be indexed",
+    "content": ""
+  }
+]

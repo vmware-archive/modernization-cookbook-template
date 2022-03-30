@@ -1,0 +1,18 @@
+{{ define "title" }}
+{{ .Site.Title }}: {{ .Title }}
+{{ end }}
+{{ define "main" }}
+<h1>{{.Title}}</h1>
+<p class="last-updated">
+    <i class="far fa-clock"></i> Last updated {{ .Lastmod.Format "January 2, 2006" }}{{ if and (not (isset .Params "author")) (.GitInfo) }} by {{ .GitInfo.AuthorName }}{{ end }}
+    <a target="_blank" href="{{.Site.Params.RepoHistoryPrefix}}{{.File.Path}}"><i class="fas fa-history"></i> Show History</a>
+    <a target="_blank" href="{{.Site.Params.RepoEditPrefix}}{{.File.Path}}"><i class="far fa-edit"></i> Improve This Page</a>
+    {{ if .Params.Tags }}
+    <br/><i class="fas fa-tags"></i>
+    {{ range .Params.Tags }}
+    <a class="label clickable" href="/tags/{{ . | urlize }}">{{.}}</a>
+    {{ end }}
+    {{ end }}
+</p>
+{{ .Content }}
+{{ end }}

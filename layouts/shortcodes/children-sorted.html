@@ -1,0 +1,14 @@
+{{ $thisSection := $.Page.Section }}
+{{.Inner}}
+
+{{ $allRecipes := (sort (where ( where .Site.RegularPages "Section" $thisSection ) ".Title" "!=" $thisSection) ".Name" "asc")}}
+<div>
+    <p>List of the <span class="badge">{{ len $allRecipes }}</span> recipe(s) within the "{{ $thisSection }}" section:</p>
+</div>
+<ul class="children children-li">
+{{ range $allRecipes }}
+{{ if .Title }}
+    <li><span><a href="{{ .Permalink }}">{{ .Title }}</a></span></li>
+{{ end }}
+{{ end }}
+</ul>

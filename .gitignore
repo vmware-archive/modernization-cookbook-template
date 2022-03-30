@@ -1,0 +1,16 @@
+/public/*
+!/public/.gitkeep
+node_modules/
+/.DS_Store
+.DS_Store
+params.yml
+.vscode
+.idea
+hugo-build.log
+venv/
+.gradle
+build/
+.classpath
+.project
+.settings
+vars.yml

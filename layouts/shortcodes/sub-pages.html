@@ -1,0 +1,20 @@
+{{ $thisSection := $.Page.Section }}
+{{ $typeName :=  $.Params.name }}
+{{ $filterType :=  $.Params.type }}
+{{ $sectionName :=  $.Params.section }}
+
+{{.Inner}}
+
+{{ $allPages := (sort (where ( where .Site.Pages "Type" $filterType ) ".Title" "!=" $thisSection) ".Name" "asc")}}
+{{ if gt $allPages 0 }}
+<div>
+    <p>List of the <span class="badge">{{ len $allPages }}</span> {{ $typeName }} within the current section:</p>
+</div>
+<ul class="children children-li">
+{{ range $allPages }}
+{{ if .Title }}
+    <li><span><a href="{{ .Permalink }}">{{ .Title }}</a></span></li>
+{{ end }}
+{{ end }}
+</ul>
+{{ end }}

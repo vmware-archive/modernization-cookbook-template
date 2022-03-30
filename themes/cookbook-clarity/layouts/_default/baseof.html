@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    {{ $clarity := resources.Get "css/clr-ui-dark.min.css" | minify | fingerprint}}
+    {{ $fontawesome := resources.Get "css/fontawesome-all.min.css" | minify | fingerprint}}
+    {{ $cookbook := resources.Get "css/cookbook.css" | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $clarity.RelPermalink }}" media="all"/>
+    <link rel="stylesheet" href="{{ $fontawesome.RelPermalink }}" media="all"/>
+    <link rel="stylesheet" href="{{ $cookbook.RelPermalink }}" media="all"/>
+    <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    {{ $altLink := `<link rel="%s" type="%s" href="%s" title="%s">` }}
+    {{- $title := printf "%s - %s" $.Page.Title $.Site.Title -}}
+    {{- if $.Page.IsHome -}}
+        {{ $title = $.Site.Title }}
+    {{- end -}}
+    {{ range .AlternativeOutputFormats -}}
+        {{ printf $altLink .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ end }}
+</head>
+<body data-url="{{ .RelPermalink }}" class="main-container">
+<header class="header cookbook-header">
+    <a href="/">
+        <img src="{{.Site.Params.Logo}}" class="logo" alt="{{.Site.Params.LogoAlt}}"/>
+    </a>
+    <div class="header-title">
+        <a href="/">{{ .Site.Title }}</a>
+    </div>
+    <div>
+        <a class="header-link" href="{{ .Site.Params.RepoLink }}" rel="noreferrer" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+</header>
+<div class="content-container">
+    <div class="clr-vertical-nav has-icons has-nav-groups">
+        <div class="search-box">
+            <form name="search" action="/search" method="get">
+                <input name="query" type="text" placeholder="Search" value="{{ block "query" . }}{{ end }}">
+                <div class="reset"></div>
+            </form>
+        </div>
+        {{- partial "menu.html" . }}
+    </div>
+    <div class="content-area-wrapper">
+        <div class="content-area">
+            {{ block "main" . }}
+            {{ end }}
+        </div>
+        <div class="footer">
+            {{ .Site.Copyright }}
+        </div>
+    </div>
+</div>
+<script>
+    (() => {
+        const resetButton = document.querySelector(".search-box .reset");
+        const searchBox = document.querySelector(".search-box input");
+        resetButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            searchBox.value = "";
+            searchBox.focus();
+        });
+
+        document.querySelectorAll(".nav-group.open").forEach((navGroup) => {
+            navGroup.querySelector(".nav-group-content .nav-group-trigger-icon .category-icon").addEventListener("click", (e) => {
+                e.preventDefault();
+                if (navGroup.classList.contains("open")) {
+                    navGroup.classList.remove("open");
+                } else {
+                    navGroup.classList.add("open");
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>

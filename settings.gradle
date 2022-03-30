@@ -1,0 +1,4 @@
+rootProject.name = 'cookbook-template'
+
+include "frontend"
+include "backend"

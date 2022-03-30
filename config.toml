@@ -1,0 +1,37 @@
+baseURL = "https://your-base-url.com/"
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+title = "Application Modernization Cookbook"
+copyright = "Copyright 2022 Foo Bar inc. All Rights Reserved, Confidential"
+theme = "cookbook-clarity"
+publishDir = "public"
+pygmentsCodeFences = true
+pygmentsStyle = "friendly"
+enableRobotsTXT = true
+enableGitInfo = true
+
+[params]
+repoLink = "https://github.com/repository/link/here"
+repoHistoryPrefix = "https://github.com/repository/link/commits/master/content/"
+repoEditPrefix = "https://github.com/repository/link/edit/master/content/"
+logo = "/images/VMwareTanzuLabs.png"
+logoAlt = "VMware Tanzu Labs"
+
+[markup]
+    [markup.highlight]
+        style = "solarized-dark"
+
+[outputFormats]
+  [outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "index"
+    isPlainText = true
+    notAlternative = true
+
+[outputs]
+home = [ "HTML", "RSS", "SearchIndex"]
+
+[[menu.shortcuts]]
+pre = "<h5>&nbsp;</h5>"
+name = "<i class='fa fa-tag'></i>&nbsp;&nbsp;All Tags"
+url = "/tags/"

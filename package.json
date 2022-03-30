@@ -1,0 +1,11 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "Cookbook",
+  "main": "index.html",
+  "scripts": {
+    "start": "hugo server -w -v",
+    "hugo-build": "hugo -Ds '' --gc --minify",
+    "build": "./publish"
+  }
+}

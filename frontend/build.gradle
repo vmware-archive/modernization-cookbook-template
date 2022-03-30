@@ -1,0 +1,47 @@
+plugins {
+    id "java"
+    id "com.moowork.node" version "1.3.1"
+}
+
+sourceCompatibility = '1.8'
+
+clean {
+    dependsOn "cleanFrontend"
+}
+
+task cleanFrontend(type: Delete) {
+    delete "${project.projectDir}/../public"
+}
+
+jar {
+    dependsOn "npm_run_build"
+
+    from {
+        "${project.projectDir}/../public"
+    }
+
+    into "static"
+
+    filesMatching("**/search/index.html") {
+        it.path = "templates/search_results.html"
+    }
+}
+
+npm_run_build {
+    inputs.files fileTree("../content")
+    inputs.files fileTree("../static")
+    inputs.files fileTree("../layouts")
+    inputs.files fileTree("../scripts")
+    inputs.files fileTree("../themes")
+    inputs.files fileTree("../config.toml")
+    inputs.files fileTree("../package.json")
+    inputs.files fileTree("../package-lock.json")
+    inputs.files fileTree("../publish")
+
+    outputs.dir "../public"
+}
+
+node {
+    download = false
+    nodeModulesDir = file("${project.projectDir}/..")
+}

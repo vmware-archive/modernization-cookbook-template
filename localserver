@@ -1,0 +1,2 @@
+#!/bin/sh
+hugo server -wDs . -b http://localhost:1313/

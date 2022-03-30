@@ -1,0 +1,8 @@
+{{.Inner}}
+
+<ul class="children children-li">
+{{ range first 10 .Site.RegularPages.ByDate.Reverse }}
+    <li><span>{{ .Date.Format "02/01/2006" }} - <a href="{{ .Permalink }}">{{ .Title }}</a></span></li>
+{{ end }}
+</ul>
+    

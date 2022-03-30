@@ -1,0 +1,6 @@
+This is a placeholder.
+
+The actual template source is in content/search.md.
+
+Hugo compiles it to public/search/index.html and the :frontend:jar Gradle task defined in
+frontend/build.gradle places this file into the jar as /templates/search_results.html.
