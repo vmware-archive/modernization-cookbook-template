@@ -18,7 +18,7 @@
     "gulp-cli": "2.3.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.1.0",
-    "gulp-shell": "^0.5.2",
+    "gulp-shell": "^0.8.0",
     "gulp-uglify-es": "1.0.4",
     "is-svg": ">=4.2.2",
     "lodash.template": "^4.5.0",
