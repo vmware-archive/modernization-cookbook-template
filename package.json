@@ -19,7 +19,7 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-shell": "^0.8.0",
-    "gulp-uglify-es": "1.0.4",
+    "gulp-uglify-es": "3.0.0",
     "is-svg": ">=4.2.2",
     "lodash.template": "^4.5.0",
     "minimist": ">=1.2.6",
